@@ -1,0 +1,33 @@
+\section{Linear Discriminant Analysis}
+
+Linear Discriminant Analysis (LDA) is another statistical tool for dimensionality reduction, which is theoretically more appropriate than PCA for classification problems as SCA, since it seeks for linear combinations of data that characterizes or separates two or more classes, not only spreading class centroids as much as possible, as the class-oriented PCA does, but also minimizing the so-called {\em intra-class variance}, i.e. the variance shown by data belonging to the same class. Applying LDA consists in maximizing the {\em Rayleigh quotient}:
+ \begin{equation}\label{eq:LDA}
+ \mathrm{argmax}_{\AAlpha} \frac{\AAlpha^T \SB \AAlpha}{\AAlpha^T \SW \AAlpha} \mbox{ ,}
+ \end{equation}
+where $\SB$ is the {\em between-class scatter matrix} already defined in Eq.~(\ref{eq:SB}) and $\SW$ is called 
+{\em within-class} (or intra-class) {\em scatter matrix}:
+
+\begin{equation}
+\SW = \sum_{\sensVar\in\sensVarSet}\sum_{i=1}^{\numTraces}(\sss{i}-\mmmX)(\sss{i}-\mmmX)^T \mbox{.}
+\end{equation}
+
+
+\begin{remark}
+Let $\covmat$ be the the global covariance matrix of data, also called {\em total scatter matrix}, defined in (\ref{eq:covmat}); we remark the important link between $\SW,\SB$ and $\covmat$:
+\begin{equation}
+\covmat = \frac{1}{\numTraces[]}(\SW + \SB) \mbox{ .}
+\end{equation}
+\end{remark}
+
+\subsection{The Small Sample Size Problem}
+
+
+
+\subsection{Fisherface Method}
+
+
+\subsection{$SW$ Null Space Method}
+
+\subsection{Direct LDA}
+
+\subsection{$ST$ Spanned Space Method}

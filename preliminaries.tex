@@ -1,0 +1,111 @@
+\section{Preliminaries, Notations and Main Issue}
+
+\subsection{Notations}
+\begin{tiny}
+Notations: to rewrite properly
+\begin{itemize}
+
+\item Bold block capitals like $\measuresMatrix$ indicate matrices
+\item Greek or Latin bold lower cases, as $\AAlpha$ or   $\yyy$, indicate vectors
+\item Scalar variables are denoted by ordinary lower cases, like $x$
+\item The entries of a vector will be indicated by the index/indexes of the entry in square brackets, e.g. $\measuresMatrix[i,j]$ or $\AAlpha[i]$
+\medskip
+\item Capital letters as $K$ denote random variables , in bold as $\SSS[]{}$ denote random vectors
+\item The corresponding letter in lower case indicates a realization of the random variable: $k$ is a realization of $K$ and $\sss[]{}$ is a realization of $\SSS[]{}$
+\item The corresponding calligraphic letter $\mathcal{K}$ will denote the finite set random variable $K$ is defined over
+\medskip
+\item Parts of plaintexts $\randPlaintext$, target subkeys $\randKey$ and sensitive variables $\sensRandVar = \targetFunction(\randPlaintext,\randKey)$ are treated and denoted as random variables
+\item Side-Channel measurements corresponding to the manipulations of a sensitive variable $\sensVar$ are also random variables, thus denoted as $\SSS = \SSS []\mid \sensRandVar = \sensVar$, where the corresponding random variable value is an upper index, thus a side-channel trace is denoted by $\sss{}$
+\item In general side-channel measurements are multidimensional real data, $\SSS[]{} \in \mathbb{R}^D$ and are supposed to be zero-mean vectors: $E[\SSS[]] = \textbf{0}$
+
+\end{itemize}
+\end{tiny}
+\subsection{Preliminaries}
+
+A side-channel key recovery adversary, being inspired by the model proposed by Standaert et al. \cite{unifiedFramework}, corresponds to a 5-tuple 
+
+\begin{equation}
+\adversary = (\attackAlgorithm, \tau, \memComplexity , \numTraces[]', \numTraces[]) \mbox{}
+\end{equation}
+where $\attackAlgorithm$ is an algorithm or a procedure with time complexity $\tau$ and memory complexity $\memComplexity$, that takes as input two sets of measurements of respective sizes $N'$ and $N$. The algorithm $A$ returns a vector of key candidates: since the goal of the attack is to guess the right key among the elements of a set  $\keySet$  of candidates, the output vector, called {\em guessing vector} $\guessingVector$, sorts such candidates in decreasing order with respect to their likelihood
+
+\begin{equation}
+\attackAlgorithm \colon \left( (\sss[]{i})_{i=1,\dots \numTraces[]'}, (\sssTest[]{j})_{j=1,\dots \numTraces[]} \right) \mapsto \guessingVector = \left[\guessingVector[1], \dots, \guessingVector[{\lvert \keySet \rvert}]\right] \mbox{ .}
+\end{equation}
+
+
+The first set of traces, here called {\em profiling set}, is optional, and corresponds to measurements obtained from a profiling device, identical to the device under attack, but with full access to the of public and secret parameters. The second set of traces,  called {\em attack set}, corresponds to measurements acquired from the device under attack, parametrized by a key, which will be the target of the attack.
+
+An interesting tool to assess the soundness of an adversary is given by the {\em guessing entropy} \cite{massey1994guessing} and by the {asymptotic guessing entropy}, respectively defined as
+
+\begin{equation}
+\guessingEntropy_{\adversary(\numTraces[])}  = \mathbb{E}\left[i \colon \guessingVector[i] = \keyTest \right] \quad \mbox{ and } \quad \guessingEntropy^\infty_\adversary  = \lim_{\numTraces[]\rightarrow \infty} \guessingEntropy_{\adversary(\numTraces[])} \mbox{ ,}
+\end{equation}
+where $\adversary(\numTraces[])$ denotes the adversary $\adversary$ with its fifth parameter fixed to $\numTraces[]$.
+A trace $\sss[]{}$ can be seen as an element in $\mathbb{R}^\traceLength$, and in general its size, that depends on a lot of factors (e.g. the instruments setup or the cryptographic algorithm under attack) ranges between some thousands and some hundreds of thousands. Nevertheless, only few points of the trace depend on the secret target key. A preliminary step of an attack therefore consists in general in the extraction of the so-called {Points of Interest (PoI)} from the  rough traces. By definition, the latter points are those which depend on both the secret target parameter and on some given public data. This extraction represents a non-trivial concrete obstacle for the performances of an attack.
+
+\subsection{PoI Research Formalization: Extractors and Fundamental Property}
+
+
+To formalize the problem of the research of PoIs, we remark that in general an attack is composed of four significantly different phases:
+
+\begin{enumerate}
+\item Instruments calibration and traces acquisitions (to build the profiling and attack sets)
+\item (Optional) trace pre-processing
+\item (Optional) profiling (useful to model the leakage function)
+\item Key discrimination: a  statistical test, or a statistical distinguisher, is processed over the  traces to discriminate key candidates
+\end{enumerate}
+In this scheme the research of PoI coincides with the phase of traces pre-processing, that we will formalize as the application of a function, called {\em extractor} (by analogy to the notion of randomness extractor \cite{DBLP:journals/jcss/NisanZ96}):
+
+\begin{definition}
+Let $\sss[]{}\in \mathbb{R}^\traceLength$ represents an observation. An {\em Extractor of Feature}, or an {\em Extractor} for short, is any function of the form:
+\begin{align*}
+\mathbb{R}^\traceLength & \rightarrow \mathbb{R}^\newTraceLength \quad \mbox{ with } \traceLength \leq \newTraceLength \\
+\sss[]{} & \mapsto \extractor[\newTraceLength]{\sss[]{}} \mbox{ .}
+\end{align*}
+\end{definition}
+Obviously, not any extractor $\extract$ is suitable to effectuate the traces pre-processing of an attack; for example the restriction over a random coordinate, i.e. $\extractor{\sss[]{}} = x[r]$, $r$ being random, is hardly a good candidate for an extractor. For this reason an adversary might aim to only consider extractors that satisfy the following fundamental property:
+
+\begin{property}[Effective Extractors]
+Let $\adversary$ be an adversary and $\guessingEntropy_\adversary(\numTraces[])$ be its guessing entropy in function of $\numTraces[]$, when no trace processing phase is effectuated. Let $\extract$ be an extractor, and $\adversary'$ be an adversary that coincides with $\adversary$ but whose algorithm $\attackAlgorithm$ is fed with the sets $ \left( \left(\extract(\sss[]{n'})\right)_{n'=1,\dots \numTraces[]'}, \left(\extract((\sssTest[]{n}))\right)_{n=1,\dots \numTraces[]} \right)$, i.e. an adversary that applies $\extract$ as traces pre-processing phase. The extractor $\extract$ is an {\em effective  extractor of PoIs with respect to $\numTraces[]$} only if 
+
+\begin{equation}
+\guessingEntropy_{\adversary'(T)} \leq \guessingEntropy_{\adversary(T)} \mbox{ for each } T \geq\numTraces[] \mbox{ .}
+\end{equation}
+
+\end{property}
+In practice this property guarantees that the application of $\extract$ does not discard the informative parts of the traces, those that make $\adversary$ achieve its guessing entropy.
+
+\subsection{The Main Issue:  Compare Effective Extractors}
+
+As we have seen in the Introduction, the state of the art proposes different techniques to create extractors:  a $T$-test followed by a thresholding, PCA, LDA, ...\\
+A lot of these tools make use of the profiling traces to provide an extractor; thus, for such techniques the profiling traces are mandatory and cover the double role of feeding the method that generates the extractor, and modelling the leakage function if the adversary makes use of a profiling attack.\\
+It could be shown, but it is out of the scope of this paper, that all these methods, eventually provided of enough profiling observations, construct effective extractors.\\
+A much less theoretical issue, but very important from a practical point of view, is the comparison between the proposed methods: seldom the extractors provided by different methods are equal or similar, and choosing which one is the best is not a trivial task, especially because a universal criteria to compare different extractors is undefinable, since such a criteria should take into account a lot of parameters. Indeed, an extractor that might be optimal for an adversary, could be largely sub-optimal for another adversary that, for example, uses a different attack algorithm, or have some upper bounds for the number of profiling traces or attack traces acquirable, or have some memory constraints that makes preferable an extractor $\extract_\newTraceLength$ with small image size $\newTraceLength$, or simply works with measurements that has a different behaviour. \\
+Since the aim of this paper is to effectuate a comparison between different existing methods, and some new propositions, to construct extractors of PoI, we are obliged to focus on a specific adversary, and fix some criteria the adversary aims to satisfy. 
+\subsubsection{The testing adversary} Our testing adversary performs a Bayesian Template Attack, which is a widely established powerful method, optimal from an information theory point of view. 
+\todo{description of the device, the algorithm implemented by the device and the acquisitions}
+
+
+\subsubsection{The Four Criteria}
+The comparison of the tested methods is based on four criteria, that exploit the guessing entropy as efficiency measure for an attack whose preprocessing coincides with the extractors to compare. For each criterion let us fix a common threshold $\threshold$ for such a guessing entropy, and all the adversary parameters but the one targeted by the specific criterion. We consider four criteria: 
+\begin{enumerate}
+\item {\em Minimize $\numTraces[]$}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ with the minimal number of attack traces
+\item {\em Minimize $\numTraces[]'$}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ with the minimal number of profiling traces
+\item {\em Minimize $\newTraceLength$}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ reducing as much as possible the size of the extracted traces
+\item {\em Minimize the number of PoI}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ exploiting the minimal number of original trace points.
+\end{enumerate}
+The last criterion can be expressed, for the projecting methods, as the search for a projecting matrix which as much of null columns as possible. 
+
+
+
+
+
+
+
+
+
+
+
+
+

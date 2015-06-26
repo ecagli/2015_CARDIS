@@ -1,0 +1,161 @@
+\documentclass{llncs}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\theoremstyle{definition}
+%\newtheorem{teo}{Theorem}[section]
+%\newtheorem{defi}{Definition}[section]
+%\newtheorem{oss}{Remark}[section]
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{cor}{Corollary}[section]
+%\newtheorem{ex}{Example}[section]
+%\newtheorem{prop}{Proposition}[section]
+%\newtheorem{note}{Notes}[section]
+%\newtheorem{fact}{Fact}[section]
+
+\spnewtheorem{assumption}{Assumption}{\bfseries}{\itshape}
+
+
+
+
+
+
+%
+\newcommand{\sensVar}{z}
+\newcommand{\sensRandVar}{Z}
+\newcommand{\sensVarSet}{\mathcal{Z}}
+\newcommand{\plaintext}{p}
+\newcommand{\randPlaintext}{P}
+\newcommand{\plaintextSet}{\mathcal{P}}
+\newcommand{\targetFunction}{e}
+
+
+\newcommand{\key}{k}
+\newcommand{\randKey}{K}
+\newcommand{\keyTest}{k^{\star}}
+\newcommand{\keySet}{\mathcal{K}}
+\newcommand{\var}[1]{\mathrm{Var}\left(#1\right)}
+
+\newcommand{\numTraces}[1][z]{N_{#1}}
+\newcommand{\numTracesAttack}{N_a}
+\newcommand{\sss}[2][z]{\textbf{x}^{#1}_{#2}} % $\sss{i}$ or $\sss[k]{i}$
+\newcommand{\sssTest}[2][z]{\textbf{y}^{#1}_{#2}} % $\sssTest{i}$ or $\sssTest[k]{i}$
+\newcommand{\SSS}[1][z]{\textbf{X}^{#1}}
+\newcommand{\sssSet}{\mathcal{X}}
+\newcommand{\SSSTest}[1][z]{\textbf{Y}_{#1}}
+
+\newcommand{\extractor}[2][]{\varepsilon_{#1}(#2)}
+\newcommand{\extract}{\varepsilon}
+\newcommand{\bestExtractor}{\varepsilon^\star}
+
+\newcommand{\AAlpha}{\boldsymbol\alpha}
+\newcommand{\BBeta}{\boldsymbol\beta}
+\newcommand{\mmm}{\textbf{m}}
+\newcommand{\mmmX}{\overline{\textbf{x}}}
+\newcommand{\mmmXclass}[1][z]{\overline{\textbf{x}}^{#1}}
+\newcommand{\mmmY}{\overline{\textbf{y}}}
+%\newcommand{\mmmX}[1][z]{{\bf \meanEst{{\textnormal{$(#1)$}}}}}
+%\newcommand{\mmmY}[1][z]{{\bf \meanEst{{\textnormal{$(#1)$}}}}}
+
+\newcommand{\mmmXtot}{{\overline{\bf \meanEst{}}}}
+
+\newcommand{\meanNoise}{{\bf \mu}}
+\newcommand{\meanEst}[1]{\mathrm{\bf m}_1 #1 }
+\newcommand{\varEst}[1]{\mathrm{m}_2(#1)}
+\newcommand{\mean}[2][]{\Bbb{E}_{#1}\left(#2\right)}
+
+
+\newcommand{\xxx}{\textbf{x}}
+\newcommand{\XXX}{\textbf{X}}
+\newcommand{\yyy}{\textbf{y}}
+\newcommand{\YYY}{\textbf{Y}}
+\newcommand{\measuresMatrix}{\textbf{M}}
+\newcommand{\projectingMatrix}{\textbf{A}}
+\newcommand{\info}[1][z]{\boldsymbol{\varphi}({#1})}
+\newcommand{\BBB}{\textbf{B}}
+\newcommand{\zero}{\mathbf{0}}
+\newcommand{\traceLength}{D}
+\newcommand{\newTraceLength}{C}
+
+\newcommand{\covmat}{\textbf{S}}
+
+
+\newcommand{\succRate}{\mathrm{SR}}
+\newcommand{\memComplexity}{m}
+\newcommand{\guessingVector}{\mathrm{\textbf{g}}}
+\newcommand{\adversary}{\mathcal{A}}
+\newcommand{\attackAlgorithm}{\mathrm{A}}
+\newcommand{\guessingEntropy}{\mathrm{GE}}
+\newcommand{\threshold}{\beta}
+
+
+\newcommand{\vectorContribution}[1][k]{\mathrm{\textbf{ELV}}(#1)}
+\newcommand{\varianceInPoints}[2][n]{\mathrm{H}_{#1}(#2)}
+\newcommand{\coupleSet}{\mathbb{J}}
+
+\newcommand{\prob}{\mathrm{Pr}}
+
+\newcommand{\SW}{\textbf{S}_{\textbf{W}}}
+\newcommand{\SB}{\textbf{S}_{\textbf{B}}}
+\newcommand{\ST}{\textbf{S}_{\textbf{T}}}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{color}   %May be necessary if you want to color links
+%\usepackage{hyperref}
+%\hypersetup{
+%    colorlinks=true, %set true if you want colored links
+%    linktoc=all,     %set to all if you want both sections and subsections linked
+%    linkcolor=red,  %choose some color if you want links to stand out
+%    linktocpage
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ %PACKAGE TODONOTES
+\usepackage[textwidth=3.7cm]{todonotes}
+\newcounter{todocounter}
+
+\newcommand{\todonum}[2][]
+{\stepcounter{todocounter}\todo[#1]{\thetodocounter: #2}}
+
+\newcommand\todoin[2][]{\todo[inline, caption={2do}, #1]{
+\begin{minipage}{\textwidth-4pt}#2\end{minipage}}}
+
+\newcommand{\comEP}[1]{\textcolor{blue}{EP: #1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\begin{document}
+\title{Work in Progress Paper}
+\author{}
+\maketitle
+\begin{abstract}
+Abstract, very abstract
+\end{abstract}
+\input{intro}
+\input{preliminaries}
+\input{PCA}
+\input{LDA}
+\input{experiments}
+\input{conclusions}
+ \bibliographystyle{plain}
+ \bibliography{../my_bib}
+
+
+%\todototoc
+%\listoftodos[List of comments and TO-DOs]
+\end{document}
