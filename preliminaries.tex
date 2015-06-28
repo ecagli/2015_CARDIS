@@ -42,17 +42,17 @@ An interesting tool to assess the soundness of an adversary is given by the {\em
 \guessingEntropy_{\adversary(\numTraces[])}  = \mathbb{E}\left[i \colon \guessingVector[i] = \keyTest \right] \quad \mbox{ and } \quad \guessingEntropy^\infty_\adversary  = \lim_{\numTraces[]\rightarrow \infty} \guessingEntropy_{\adversary(\numTraces[])} \mbox{ ,}
 \end{equation}
 where $\adversary(\numTraces[])$ denotes the adversary $\adversary$ with its fifth parameter fixed to $\numTraces[]$.
-A trace $\sss[]{}$ can be seen as an element in $\mathbb{R}^\traceLength$, and in general its size, that depends on a lot of factors (e.g. the instruments setup or the cryptographic algorithm under attack) ranges between some thousands and some hundreds of thousands. Nevertheless, only few points of the trace depend on the secret target key. A preliminary step of an attack therefore consists in general in the extraction of the so-called {Points of Interest (PoI)} from the  rough traces. By definition, the latter points are those which depend on both the secret target parameter and on some given public data. This extraction represents a non-trivial concrete obstacle for the performances of an attack.
+A trace $\sss[]{}$ can be seen as an element in $\mathbb{R}^\traceLength$, and in general its size, that depends on a lot of factors (e.g. the instruments setup or the cryptographic algorithm under attack) ranges between some thousands and some hundreds of thousands. Nevertheless, only few points of the trace depend on the secret target key. A preliminary step of an attack therefore generally consists in the extraction of the so-called {Points of Interest (PoI)} from the  rough traces. By definition, the latter points are those which depend on both the secret target parameter and on some given public data (a necessary condition to perform {\em differential} attacks). This extraction represents a non-trivial concrete obstacle for the practical performances of an attack.
 
 \subsection{PoI Research Formalization: Extractors and Fundamental Property}
 
 
-To formalize the problem of the research of PoIs, we remark that in general an attack is composed of four significantly different phases:
+To formalize the problem of the research of PoIs, we remark that in general an attack is composed of four fundamentally different phases:
 
 \begin{enumerate}
 \item Instruments calibration and traces acquisitions (to build the profiling and attack sets)
-\item (Optional) trace pre-processing
-\item (Optional) profiling (useful to model the leakage function)
+\item $\mbox{[Optional]}$ trace pre-processing
+\item $\mbox{[Optional]}$  profiling (useful to model the leakage function)
 \item Key discrimination: a  statistical test, or a statistical distinguisher, is processed over the  traces to discriminate key candidates
 \end{enumerate}
 In this scheme the research of PoI coincides with the phase of traces pre-processing, that we will formalize as the application of a function, called {\em extractor} (by analogy to the notion of randomness extractor \cite{DBLP:journals/jcss/NisanZ96}):
@@ -64,13 +64,16 @@ Let $\sss[]{}\in \mathbb{R}^\traceLength$ represents an observation. An {\em Ext
 \sss[]{} & \mapsto \extractor[\newTraceLength]{\sss[]{}} \mbox{ .}
 \end{align*}
 \end{definition}
+\begin{notation}
+The dimension $C$ of an extractor will be omitted if there is no ambiguity or if it is not needed in the context.
+\end{notation}
 Obviously, not any extractor $\extract$ is suitable to effectuate the traces pre-processing of an attack; for example the restriction over a random coordinate, i.e. $\extractor{\sss[]{}} = x[r]$, $r$ being random, is hardly a good candidate for an extractor. For this reason an adversary might aim to only consider extractors that satisfy the following fundamental property:
 
 \begin{property}[Effective Extractors]
-Let $\adversary$ be an adversary and $\guessingEntropy_\adversary(\numTraces[])$ be its guessing entropy in function of $\numTraces[]$, when no trace processing phase is effectuated. Let $\extract$ be an extractor, and $\adversary'$ be an adversary that coincides with $\adversary$ but whose algorithm $\attackAlgorithm$ is fed with the sets $ \left( \left(\extract(\sss[]{n'})\right)_{n'=1,\dots \numTraces[]'}, \left(\extract((\sssTest[]{n}))\right)_{n=1,\dots \numTraces[]} \right)$, i.e. an adversary that applies $\extract$ as traces pre-processing phase. The extractor $\extract$ is an {\em effective  extractor of PoIs with respect to $\numTraces[]$} only if 
+Let $\adversary$ be an adversary and $\guessingEntropy_\adversary(\numTraces[])$ be its guessing entropy in function of $\numTraces[]$, when no trace processing phase is effectuated. Let $\extract$ be an extractor, and $\adversary'$ be an adversary that coincides with $\adversary$ but whose algorithm $\attackAlgorithm$ is fed with the sets $ \left( \left(\extract(\sss[]{n'})\right)_{n'=1,\dots \numTraces[]'}, \left(\extract((\sssTest[]{n}))\right)_{n=1,\dots \numTraces[]} \right)$, i.e. an adversary that applies $\extract$ as traces pre-processing phase. The extractor $\extract$ is an {\em effective  extractor of PoIs with respect to $\numTraces[]$} only if, for any $T \geq\numTraces[] $, we have:
 
-\begin{equation}
-\guessingEntropy_{\adversary'(T)} \leq \guessingEntropy_{\adversary(T)} \mbox{ for each } T \geq\numTraces[] \mbox{ .}
+\begin{equation}\label{eq:effective}
+\guessingEntropy_{\adversary'(T)} \leq \guessingEntropy_{\adversary(T)}\mbox{ .}
 \end{equation}
 
 \end{property}
@@ -78,9 +81,10 @@ In practice this property guarantees that the application of $\extract$ does not
 
 \subsection{The Main Issue:  Compare Effective Extractors}
 
-As we have seen in the Introduction, the state of the art proposes different techniques to create extractors:  a $T$-test followed by a thresholding, PCA, LDA, ...\\
-A lot of these tools make use of the profiling traces to provide an extractor; thus, for such techniques the profiling traces are mandatory and cover the double role of feeding the method that generates the extractor, and modelling the leakage function if the adversary makes use of a profiling attack.\\
-It could be shown, but it is out of the scope of this paper, that all these methods, eventually provided of enough profiling observations, construct effective extractors.\\
+
+As we have seen in the introduction, the state of the art proposes different techniques to create extractors:  a $T$-test followed by a thresholding, PCA, LDA, etc.\\
+A lot of these tools make use of the profiling traces to provide an extractor; thus, for such techniques the profiling traces are mandatory and cover the double role of feeding the method that generates the extractor, and of modelling the leakage function if the adversary makes use of a profiling stage. It could be shown, but it is out of the scope of this paper, that all these methods, eventually provided with enough profiling observations, construct effective extractors (meaning that there exists a threshold $N$, possible high, for which (\ref{eq:effective}) is satisfied).\\
+
 A much less theoretical issue, but very important from a practical point of view, is the comparison between the proposed methods: seldom the extractors provided by different methods are equal or similar, and choosing which one is the best is not a trivial task, especially because a universal criteria to compare different extractors is undefinable, since such a criteria should take into account a lot of parameters. Indeed, an extractor that might be optimal for an adversary, could be largely sub-optimal for another adversary that, for example, uses a different attack algorithm, or have some upper bounds for the number of profiling traces or attack traces acquirable, or have some memory constraints that makes preferable an extractor $\extract_\newTraceLength$ with small image size $\newTraceLength$, or simply works with measurements that has a different behaviour. \\
 Since the aim of this paper is to effectuate a comparison between different existing methods, and some new propositions, to construct extractors of PoI, we are obliged to focus on a specific adversary, and fix some criteria the adversary aims to satisfy. 
 \subsubsection{The testing adversary} Our testing adversary performs a Bayesian Template Attack, which is a widely established powerful method, optimal from an information theory point of view. 
