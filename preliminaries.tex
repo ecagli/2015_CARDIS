@@ -67,6 +67,11 @@ Let $\sss[]{}\in \mathbb{R}^\traceLength$ represents an observation. An {\em Ext
 \begin{notation}
 The dimension $C$ of an extractor will be omitted if there is no ambiguity or if it is not needed in the context.
 \end{notation}
+
+\begin{example}
+A special family of extractors that is widely studied in last years, is the one constituted by the {\em linear} or {\em projecting} extractors, \textit{i.e.} those for which each sample in the reduced space $\mathbb{\newTraceLength}$ is a linear combination of samples of the original space. Such extractors can be defined by a $\traceLength \times \newTraceLength$ matrix containing as columns the coefficients to use for the $\newTraceLength$ linear combinations. 
+\end{example}
+
 Obviously, not any extractor $\extract$ is suitable to effectuate the traces pre-processing of an attack; for example the restriction over a random coordinate, i.e. $\extractor{\sss[]{}} = x[r]$, $r$ being random, is hardly a good candidate for an extractor. For this reason an adversary might aim to only consider extractors that satisfy the following fundamental property:
 
 \begin{property}[Effective Extractors]
@@ -79,7 +84,7 @@ Let $\adversary$ be an adversary and $\guessingEntropy_\adversary(\numTraces[])$
 \end{property}
 In practice this property guarantees that the application of $\extract$ does not discard the informative parts of the traces, those that make $\adversary$ achieve its guessing entropy.
 
-\subsection{The Main Issue:  Compare Effective Extractors}
+\subsection{The Main Issue:  Compare Effective Extractors}\label{sec:adversary_description}
 
 
 As we have seen in the introduction, the state of the art proposes different techniques to create extractors:  a $T$-test followed by a thresholding, PCA, LDA, etc.\\
@@ -88,8 +93,12 @@ A lot of these tools make use of the profiling traces to provide an extractor; t
 A much less theoretical issue, but very important from a practical point of view, is the comparison between the proposed methods. Seldom the extractors provided by different methods are equal or similar, and choosing which is the best one according to the context (amount of noise, specificity of the information leakage, nature of the side channel, etc.) is not a trivial task, especially because a universal criterion to compare different extractors must encompass a lot of parameters. 
 %Indeed, an extractor that might be optimal for an adversary, could be largely sub-optimal for another adversary that, for example, uses a different attack algorithm, or have some upper bounds for the number of profiling traces or attack traces acquirable, or have some memory constraints that makes preferable an extractor $\extract_\newTraceLength$ with small image size $\newTraceLength$, or simply works with measurements that has a different behaviour. \\
 Since the aim of this paper is to effectuate a comparison between different extractors, and some new propositions, to construct extractors of PoI, we are obliged to focus on a given adversary, and to specify the different goals that may be pursued by our attackers.
-\subsubsection{The testing adversary} Our testing adversary performs a Bayesian Template Attack, which is a widely established powerful method, optimal from an information theory point of view. 
-\todo{description of the device, the algorithm implemented by the device and the acquisitions}
+
+
+
+
+\subsubsection{The testing adversary}  Our testing adversary attacks an AVR microprocessor AtMega328P and acquires the traces via the ChipWhispered platform \cite{o2014chipwhisperer}. The target device stores a secret 128-bits key and performs the first steps of an AES: the reading on 16 bytes of plaintext, the AddRoundKey step and the AES Sbox. It has been programmed twice: two different keys are stored in the device memory during the acquisition of the profiling and of the attack traces, to simulate the situation of two identical devices storing a different secret. The size of the traces equals $\traceLength = 3996$. The target sensitive variable is the output of the first byte Sbox, but, since the key is fixed also during profiling phase, and both Xor and Sbox operations are bijective, we expect to detect three interesting regions: the reading of the first byte of plaintext, the first AddRoundKey and the first Sbox. We consider an identity leaking function, which implies that the 256 possible values of the Sbox output gives birth to 256 classes. For each class the adversary acquires the same number, that we will call $N_p$ of profiling traces, \textit{i.e.} $\numTraces[]'$ is always a multiple of 256.\\
+After the application of the extractor $\extract$, the trace size is reduced to $\newTraceLength$. Then the attacker performs a Bayesian Template Attack \cite{Chari2003}, using $\newTraceLength$-variate Gaussian templates.
 
 
 \subsubsection{The Four Criteria}
@@ -100,7 +109,7 @@ The comparison of the tested methods is based on four criteria, that exploit the
 \item {\em Minimize $\newTraceLength$}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ reducing as much as possible the size of the extracted traces
 \item {\em Minimize the number of PoI}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ exploiting the minimal number of original trace points.
 \end{enumerate}
-The last criterion can be expressed, for the projecting methods, as the search for a projecting matrix which as much of null columns as possible. 
+The last criterion can be expressed, for the projecting methods, as the search for a projecting matrix which as much of null rows as possible. In this way the many time samples corresponding to these zero rows, never contribute to the computation of the projected samples. The meaning of this criterion comes from the assumption that only a few time samples leak vulnerable information, and one can be interested in precisely detect only those points, e.g. a security designer.
 
 
 

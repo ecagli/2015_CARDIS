@@ -1,1 +1,24 @@
 \section{Experimental Results}
+
+The testing adversary and the four criteria we will analyse with our experiments are described in Subsection~(\ref{sec:adversary_description}). \\
+For our experiences we consider four scenarios: in each one three of the four parameters $\numTraces[], \numTraces[]', \newTraceLength, \numPoI$ are fixed and one varies. For those in which $\numTraces[]'$ is fixed, the value of $\numTraces[]'$ is chosen high enough to avoid the SSS problem; then, the extensions of LDA presented in Subsection~(\ref{sec:SSS}) are not evaluated.
+
+\subsection{Scenario 1}
+To analyse the dependence of our methods of construction of extractors on the number of attack traces $\numTraces[]$ we fixed the other parameters as follows: $N_p=50$ ($\numTraces[]'=50*256$), $\newTraceLength = 3$ and $\numPoI = 3996$ (all points are allowed to participate in the building of PCs and LDCs). Results are depicted in Figure .........\\
+
+
+\subsection{Scenario 2}
+Now we test the behaviour of the methods under analysis, varying the number $N_p$ of profiling traces per class available. The number of components $\newTraceLength$ is still fixed to 3, and $\numPoI=3996$ again. This scenario has to be divided into two parts: if $N_p\leq 15$, then $\numTraces[]'<\traceLength$ and the SSS problem occurs. Thus, in this case we will test the four extensions of LDA, associated to the standard selection, to which we refer as EGV, that consists in keeping the first $\newTraceLength$ LDCs (except for the Direct LDA, which asks to keep the last LDCs), and to the IPR selection.  We compare them to the class-oriented PCA associated to the same selection methods. The ELV selection is not performed in this case because, for some of the techniques extending LDA, the projecting LDCs are not associated to some eigenvalues in a meaningful way. On the contrary, if $N_p\geq 16$ there is no need to approximate LDA technique, so the classical one is performed. Results for this scenario are shown in Figure.........
+
+
+
+\subsection{Scenario 3}
+Let now $\newTraceLength$ be variable. Other parameters are fixed as follows: $\numTraces[] = ..., N_p=..., \numPoI = 3996$. As we can see in Figure......
+
+
+
+\subsection{Scenario 4}
+This is the only scenario in which we allow the ELV selection method not only select the components to keep but also select interesting points within the components. To attend the wished $\numPoI$, we select couples \textit{(component, time samples)} in order of decreasing ELV, allowing the presence of only $\newTraceLength = 3$ components and $\numPoI$ globally considered: to make it clearer, we impose that the matrix containing the selected components as columns has exactly $\numPoI$ rows different from the zero vector. Looking at Figure.......
+
+
+
