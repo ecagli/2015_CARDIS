@@ -34,7 +34,7 @@ Such an eigenvector problem is known under the name of {\em generalized eigenvec
 In the special case in which the matrix $\SB$ is invertible, the generalized eigenvalue problem is convertible in a regular one, as in \cite{Standaert2008}. On the contrary, when $\SB$ is singular, the simultaneous diagonalization is suggested to solve such a problem \cite{Fukunaga}. In this case one can take advantage by the singularity of $\SB$ to apply the computational trick proposed by Archambeau \textit{et al.}, see Section~(\ref{sec:PCA_classes}), since at most $r = \mathrm{rank}(\SB)$ eigenvectors can be found.\\
 
 
-\subsection{The Small Sample Size Problem}\ref{sec:SSS}
+\subsection{The Small Sample Size Problem}\label{sec:SSS}
 If the singularity of $\SB$ does not affect the LDA dimensionality reduction, we cannot say the same about the singularity of $\SW$: in both SCA and Pattern Recognition literature, the main pointed out drawback of LDA is known as the {\em Small Sample Size problem} (SSS for short): this problem occurs when the total number of acquisitions $\numTraces[]$ is less or equal than the size $\traceLength$ of them. The direct consequence of this problem is the singularity of $\SW$ and the non-applicability of the LDA.\\
 If the LDA has seen introduced relatively lately in the SCA literature, the Pattern Recognition community looks for a solution to such a problem at least since the early nineties. We browsed some of the proposed solution and chose some of them to introduce, in order to test them over side channel traces.
 
