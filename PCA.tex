@@ -6,7 +6,7 @@ The Principal Component Analysis (PCA) \cite{fisher1938statistical} is a statist
 \begin{equation}\label{eq:covmat}
 \covmat = \frac{1}{\numTraces[]} \sum_{i=1}^{\numTraces[]}(\sss[]{i} - \mmmX)(\sss[]{i} - \mmmX)^T \mbox{ ,}
 \end{equation}
- where $\mmmX$ is the empirical mean of data. Let us denote by $r$ the rank of $S$ and by $\AAlpha_1, \dots, \AAlpha_r$ and $\lambda_1, \dots, \lambda_r$ its eigenvectors and the corresponding eigenvalues, respectively. We assume that the $\AAlpha_i$ are listed in the decreasing order of the values $\lambda_i$. It can be shown that $\lambda_i$, for each $i$, equals the empirical variance of the data projected onto the corresponding PC $\AAlpha_i$. Since the data variability is associated to the amount of information, transforming data over the basis provided by the PCs allows a dimensionality reduction that minimizes the loss of information: that is projecting the data onto the  $\newTraceLength$-dimensional subspace of $\mathbb{R}^\traceLength$ spanned by the $\newTraceLength$ leading PCs.\\
+ where $\mmmX$ is the empirical mean of data. Let us denote by $r$ the rank of $S$ and by $\AAlpha_1, \dots, \AAlpha_r$ and $\lambda_1, \dots, \lambda_r$ its eigenvectors and the corresponding eigenvalues, respectively. We assume that the $\AAlpha_i$ are listed in the decreasing order of the values $\lambda_i$. It can be shown that $\lambda_i$, for each $i$, equals the empirical variance of the data projected onto the corresponding PC $\AAlpha_i$. Since the data variability is associated to the amount of information, transforming data over the basis provided by the PCs allows a dimensionality reduction that reinforces such information: that is projecting the data onto the  $\newTraceLength$-dimensional subspace of $\mathbb{R}^\traceLength$ spanned by the $\newTraceLength$ leading PCs.\\
 
 \subsection{Principal Component Analysis, the {\em Class-Oriented Version}}\label{sec:PCA_classes}
 In SCA context, the useful information part contained in data is the one that allows to discriminate observations linked to different intermediate computations. Let us denote by $\sensRandVar = \targetFunction(\randPlaintext,\randKey)$ the target intermediate variable, that depends on both a secret variable $\randKey$ and on a public one $\randPlaintext$, and that takes values $\sensVar \in \sensVarSet$. An SCA efficiency clearly depends on the ability of the involved extractor to amplify the distinguishability between traces associated to different $\sensVar$.\\
@@ -32,18 +32,18 @@ A practical problem when $\traceLength$ is large, which happens e.g. when attack
 
 
 \subsection{The Open Question: Choosing the Components to Keep?}
-The introduction of the PCA method in SCA context (either in its classical or class-oriented version)  has raised some important questions: how many principal components are sufficient/necessary to reduce the trace size (and thus the attack processing complexity) without losing important discriminative information? And which of such components are those that most point out the effective vulnerable time samples that most leak information?\\
+The introduction of the PCA method in SCA context (either in its classical or class-oriented version)  has raised some important questions: \textit{how many} principal components and \textit{which ones} are sufficient/necessary to reduce the trace size (and thus the attack processing complexity) without losing important discriminative information?\\
 
-Until now, an answer to the first question has been given \cite{choudary2014efficient}, linked to the concept of {\em explained variance} (or {\em explained global variance}, EGV for short) of a PC $\AAlpha_i$:
+Until now, an answer to the such questions has been given \cite{choudary2014efficient}, linked to the concept of {\em explained variance} (or {\em explained global variance}, EGV for short) of a PC $\AAlpha_i$:
 \begin{equation}\label{eq:EGV}
 \mathrm{EGV}(\AAlpha_i) =  \frac{\lambda_i}{\sum_{j=1}^r\lambda_j} \mbox{ ,}
 \end{equation}
 where $r$ is the rank of the covariance matrix $\covmat$, and $\lambda_j$ is the eigenvalue associated to the $j$-th PC $\AAlpha_j$. The EGV is the variance of the data projected over the $i$-th PC (which equals $\lambda_i$) divided by the total variance of the original data (given by the trace of the covariance matrix $\covmat$). By definition of EGV, the sum of all the PCs EGV is equal to $1$; that is why this quantity is often multiplied by $100$ and expressed as percentage.
-The notion of EGV offers a quite natural answer to the first question above: the idea is to fix a wished {\em Cumulative Explained Variance} $\beta$ and to keep $\newTraceLength$ different PCs, where $\newTraceLength$ is the minimum integer such that
+Choosing the PCs exploiting the EGV consists in fixing a wished {\em Cumulative Explained Variance} $\beta$ and in keeping $\newTraceLength$ different PCs, where $\newTraceLength$ is the minimum integer such that
 \begin{equation}
 \mbox{EGV}(\AAlpha_1) +\mbox{EGV}(\AAlpha_2) + \dots +\mbox{EGV}(\AAlpha_\newTraceLength) \geq \beta \mbox{ .}
 \end{equation}
-Nevertheless this method takes for granted that the optimal way to chose PCs is in their natural order, from the first to the $\newTraceLength$-th, answering trivially to our second question. However this assumption is not always confirmed in SCA context: in some works, researchers have already remarked that the first components sometimes contain more noise than information and it is worth discarding them. For the sake of providing a first example of this behaviour on publicly accessible traces, we applied a class-oriented PCA on 3000 traces from the DPA contest v4 \cite{DPAcontest}; we focused over a small 1000-dimensional window in which, in complete knowledge about masks and other countermeasures, information about the first Sbox processing leaks (during the first round). In Fig.~(\ref{fig:DPAcontest}) the first and the sixth PCs are plotted. It may be noticed that the first component indicates that one can attend a high variance by exploiting the regularity of the traces, given by the clock signal, while the sixth one has high coefficients localised in a small time interval, very likely to signalize the instants in which the target sensitive variable leaks.
+However, if the adversary has a constraint for the reduced dimension $\newTraceLength$, the EGV notion simply suggests to keep the first $\newTraceLength$ components, tanking for granted that the optimal way to chose PCs is in their natural order. Nevertheless, this assumption is not always confirmed in SCA context: in some works, researchers have already remarked that the first components sometimes contain more noise than information \cite{Batina2012,specht} and it is worth discarding them. For the sake of providing a first example of this behaviour on publicly accessible traces, we applied a class-oriented PCA on 3000 traces from the DPA contest v4 \cite{DPAcontest}; we focused over a small 1000-dimensional window in which, in complete knowledge about masks and other countermeasures, information about the first Sbox processing leaks (during the first round). In Fig.~(\ref{fig:DPAcontest}) the first and the sixth PCs are plotted. It may be noticed that the first component indicates that one can attend a high variance by exploiting the regularity of the traces, given by the clock signal, while the sixth one has high coefficients localised in a small time interval, very likely to signalize the instants in which the target sensitive variable leaks.
 
 \begin{figure}
 \includegraphics[width=.5\textwidth]{figures/PC_1_10000_198001_199000.png} 
@@ -61,10 +61,18 @@ Under this assumption, the authors of \cite{SCAclassProbl} propose a measure to 
 \end{equation}
 The authors of \cite{SCAclassProbl} suggest to collect the PCs in decreasing order with respect to the IPR score.\\
 
-The selection methods provided by the evaluation of the EGV and of the IPR are somehow complementary: the former is based only on the eigenvalues associated to the PCs and does not consider the form of the PCs themselves; the latter completely discards the information given by the eigenvalues of the PCs, considering only the distribution of their coefficients. One of the contributions of the present paper is to propose a new selection method, that builds a bridge between the EGV and the IPR approaches. As we will argue, our method, based on the so-called {\em Explained Local Variance} does not only lead to the construction of a new selection criterion, but also permits  to modify the PCs, choosing individually the coefficients to keep and those to discard. We introduce it here below. 
+The selection methods provided by the evaluation of the EGV and of the IPR are somehow complementary: the former is based only on the eigenvalues associated to the PCs and does not consider the form of the PCs themselves; the latter completely discards the information given by the eigenvalues of the PCs, considering only the distribution of their coefficients. One of the contributions of the present paper is to propose a new selection method, that builds a bridge between the EGV and the IPR approaches. As we will argue, our method, based on the so-called {\em Explained Local Variance} does not only lead to the construction of a new selection criterion, but also permits  to modify the PCs, choosing individually the coefficients to keep and those to discard. 
 
 %
 \subsection{The Explained Local Variance Selection Method} 
+
+\begin{figure}
+\includegraphics[width=0.5\textwidth]{figures/cumulativeELVallRectangle.pdf} 
+\includegraphics[width=0.5\textwidth]{figures/cumulativeELVzoomedRectangle.pdf} 
+\caption{Cumulative ELV trend of principal components. On the right a zoom of the plot on the left. Data acquisition described in Sec.~(\ref{sec:adversary_description}).}\label{fig:ELVcumulative}
+\end{figure}
+
+
 The method we propose is based on a compromise between the variance provided by each PC (more precisely its EGV) and the number of time samples necessary to achieve a consistent part of such a variance. To this purpose let us introduce the concept of {\em Explained Local Variance} (ELV, with this acronym we will also refer to the selection method): thinking to observations ${\sss[]{}}^\mathrm{T}$, or class-averages ${\mmmX}^\mathrm{T}$ in class-oriented PCA case, as realizations of a random variable $\XXX$, we have that $\lambda_i$ is an estimator for the variance of the random variable $\XXX\AAlpha_i$. Developing, we obtain
 \begin{align}\label{eq:ELV}
 \lambda_i =& \hat{\mathrm{var}}(\sum_{t_1=1}^D \XXX[t_1]\AAlpha_i[t_1]) = \sum_{t_1=1}^D\sum_{t_2=1}^D \hat{\mathrm{cov}}(\XXX[t_1]\AAlpha_i[t_1], \XXX[t_2]\AAlpha_i[t_2])=\\
@@ -78,7 +86,16 @@ The {\em Explained Local Variance} of a PC $\AAlpha_i$ in a sample $j$, is defin
 \mathrm{ELV}(i,t) = \frac{\lambda_i \AAlpha_i[t]^2}{\sum_{j=1}^r\lambda_j} = \mathrm{EGV}(i) \AAlpha_i[t]^2  \mbox{ .}
 \end{equation}
 \end{definition}
-It may be observed that the sum over all the trace samples ELVs of a PC equals the EGV of the considered PC.\\
+\begin{figure}
+\includegraphics[width=0.31\textwidth]{figures/firstPC.pdf} 
+\includegraphics[width=0.31\textwidth]{figures/secondPC.pdf} 
+\includegraphics[width=0.31\textwidth]{figures/thirdPC.pdf} \\
+\includegraphics[width=0.31\textwidth]{figures/fourthPC.pdf} 
+\includegraphics[width=0.31\textwidth]{figures/fifthPC.pdf} 
+\includegraphics[width=0.31\textwidth]{figures/sixthPC.pdf} 
+\caption{The first six PCs.}\label{fig:6components}
+\end{figure}
+It may be observed that the sum over all the trace samples ELVs of a PC equals the EGV of the considered PC. If we operate such a sum for each PC in a cumulative way and in decreasing order over the coefficients starting from the one that holds the maximal ELV, we obtain a complete vision of the trend that each component follows to achieve its EGV. As we can see in Fig.~(\ref{fig:ELVcumulative}), where such cumulative ELVs are represented, the first 3 components are much slower in achieving their final EGV, while the $4^\text{th}$, the $5^\text{th}$ and the $6^\text{th}$ achieve a large part of their final EGVs in a few points. This makes them be more expressive then the three leading PCs, if restricted to a small number of coefficient. To interpret this result and validate the meaning of the ELV, it suffices to look at the form the such components (Fig.~(\ref{fig:6components})): the leading ones are very influenced by the clock, while the latests are well localised over the leaking points.
 Actually, the ELV selection method, in analogy with the EGV one, consists in fixing a a threshold value $\beta$ for the wished {\em Cumulative Explained Local Variance} and in constructing the set 
 \begin{equation}
 S = \{(i_1, t_1), \dots , (i_{\newTraceLength},t_{\newTraceLength})\} 
