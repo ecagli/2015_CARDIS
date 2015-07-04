@@ -1,10 +1,12 @@
 \section{Linear Discriminant Analysis}
 
-Linear Discriminant Analysis (LDA) is another statistical tool for dimensionality reduction, which is theoretically more appropriate than PCA for classification problems as SCA, since it seeks for linear combinations of data that characterizes or separates two or more classes, not only spreading class centroids as much as possible, as the class-oriented PCA does, but also minimizing the so-called {\em intra-class variance}, i.e. the variance shown by data belonging to the same class. Applying LDA consists in maximizing the {\em Rayleigh quotient}:
+Linear Discriminant Analysis (LDA) is another statistical tool for dimensionality reduction, which is theoretically more appropriate than PCA for classification problems as SCA, as already observed in \cite{Standaert2008}. Indeed it seeks for linear combinations of data that characterize or separate two or more classes, not only spreading class centroids as much as possible, like the class-oriented PCA does, but also minimizing the so-called {\em intra-class variance}, i.e. the variance shown by data belonging to the same class.\\
+
+\subsubsection{Description.} Applying LDA consists in maximizing the so-called {\em Rayleigh quotient}:
  \begin{equation}\label{eq:LDA}
- \mathrm{argmax}_{\AAlpha} \frac{\AAlpha^T \SB \AAlpha}{\AAlpha^T \SW \AAlpha} \mbox{ ,}
+ \AAlpha_1=\mathrm{argmax}_{\AAlpha} \frac{\AAlpha^T \SB \AAlpha}{\AAlpha^T \SW \AAlpha} \mbox{ ,}
  \end{equation}
-where $\SB$ is the {\em between-class scatter matrix} already defined in Eq.~(\ref{eq:SB}) and $\SW$ is called 
+where $\SB$ is the {\em between-class scatter matrix} already defined in \eqref{eq:SB} and $\SW$ is called 
 {\em within-class} (or intra-class) {\em scatter matrix}:
 
 \begin{equation}
@@ -13,51 +15,48 @@ where $\SB$ is the {\em between-class scatter matrix} already defined in Eq.~(\r
 
 
 \begin{remark}
-Let $\covmat$ be the the global covariance matrix of data, also called {\em total scatter matrix}, defined in (\ref{eq:covmat}); we remark the important link between $\SW,\SB$ and $\covmat$:
+Let $\covmat$ be the the global covariance matrix of data, also called {\em total scatter matrix}, defined in \eqref{eq:covmat}; we have the following relationship between $\SW,\SB$ and $\covmat$:
 \begin{equation}
 \covmat = \frac{1}{\numTraces[]}(\SW + \SB) \mbox{ .}
 \end{equation}
 \end{remark}
 
-It can be shown that the vector $\AAlpha_1$ which maximizes the Eq.~(\ref{eq:LDA}) must satisfy the following condition:
-
-\begin{equation}\label{eq:genEVprob}
-\SB\AAlpha_1 = \lambda \SW \AAlpha_1 \quad \Rightarrow \quad \SW^{-1}\SB\AAlpha_1 = \lambda\AAlpha_1 \mbox{ ,}
-\end{equation}
-
-\textit{i.e.} has to be an eigenvector of $\SW^{-1} \SB$. Moreover for any eigenvector $\AAlpha$ of $\SW^{-1}\SB$ the Rayleigh quotient assumes the corresponding eigenvalue $\lambda$:
+It can be shown that the vector $\AAlpha_1$ which maximizes \eqref{eq:LDA} must satisfy $\SB\AAlpha_1 = \lambda \SW \AAlpha_1$, for a constant $\lambda$, \textit{i.e.} has to be an eigenvector of $\SW^{-1} \SB$. Moreover, for any eigenvector $\AAlpha$ of $\SW^{-1}\SB$, with associated eigenvalue $\lambda$, the Rayleigh quotient equals such a $\lambda$:
 \begin{equation}\label{eq:lambdas}
 \frac{\AAlpha^T \SB \AAlpha}{\AAlpha^T \SW \AAlpha} = \lambda \mbox{ .}
 \end{equation}
-Then $\AAlpha_1$ must be the leading eigenvector of $\SW^{-1} \SB$.\\
-Such an eigenvector problem is known under the name of {\em generalized eigenvector problem}, since $\SW^{-1} \SB$ is not guaranteed to be symmetric. Due to this non-symmetry,  $\AAlpha_1$ and the others eigenvectors do not form an orthonormal basis for $\mathbb{R}^\traceLength$, but they are anyway useful for classifications scopes, as in SCA. Let us refer to them as {\em Linear Discriminant Components} (LDCs for short); as for PCs we consider them sorted in decreasing order with respect to their associated eigenvalue, which gives a score for their informativeness, see Eq.~(\ref{eq:lambdas}). Analogously to the PCA, the LDA provides a natural dimensionality reduction: one can project the data over the first $\newTraceLength$ LDCs. As for PCA, this choice might not be optimal, even if the class-discriminatory definition of the problem let it be more likely to be well setted up for SCA purposes. For the sake of comparison, in next section we will test LDA in association to all the selection methods provided to PCA (EGV, IPR and ELV).\\
-In the special case in which the matrix $\SB$ is invertible, the generalized eigenvalue problem is convertible in a regular one, as in \cite{Standaert2008}. On the contrary, when $\SB$ is singular, the simultaneous diagonalization is suggested to solve such a problem \cite{Fukunaga}. In this case one can take advantage by the singularity of $\SB$ to apply the computational trick proposed by Archambeau \textit{et al.}, see Section~(\ref{sec:PCA_classes}), since at most $r = \mathrm{rank}(\SB)$ eigenvectors can be found.\\
+Then, among all eigenvectors $\SW^{-1} \SB$, $\AAlpha_1$ must be the leading one.\\
+
+The computation of the eigenvectors of $\SW^{-1} \SB$ is known under the name of {\em generalized eigenvector problem}. The difficulty here comes from the fact that $\SW^{-1} \SB$ is not guaranteed to be symmetric. Due to this non-symmetry,  $\AAlpha_1$ and the others eigenvectors do not form an orthonormal basis for $\mathbb{R}^\traceLength$, but they are anyway useful for classifications scopes, as in SCA. Let us refer to them as {\em Linear Discriminant Components} (LDCs for short); as for PCs we consider them sorted in decreasing order with respect to their associated eigenvalue, which gives a score for their informativeness, see \eqref{eq:lambdas}. Analogously to the PCA, the LDA provides a natural dimensionality reduction: one can project the data over the first $\newTraceLength$ LDCs. As for PCA, this choice might not be optimal when applying this reduction to side-channel traces. For the sake of comparison, all the selection methods proposed for the PCA (EGV, IPR and ELV) will be tested in association to the LDA as well.\\
+
+In the following subsection we will present a well-known problem that affects the LDA in many practical contexts, and describe four methods that circumvent such a problem, with the intention to test them over side-channel data.
+
 
 
 \subsection{The Small Sample Size Problem}\label{sec:SSS}
-If the singularity of $\SB$ does not affect the LDA dimensionality reduction, we cannot say the same about the singularity of $\SW$: in both SCA and Pattern Recognition literature, the main pointed out drawback of LDA is known as the {\em Small Sample Size problem} (SSS for short): this problem occurs when the total number of acquisitions $\numTraces[]$ is less or equal than the size $\traceLength$ of them. The direct consequence of this problem is the singularity of $\SW$ and the non-applicability of the LDA.\\
-If the LDA has seen introduced relatively lately in the SCA literature, the Pattern Recognition community looks for a solution to such a problem at least since the early nineties. We browsed some of the proposed solution and chose some of them to introduce, in order to test them over side channel traces.
+In the special case in which the matrix $\SB$ is invertible, the generalized eigenvalue problem is convertible in a regular one, as in \cite{Standaert2008}. On the contrary, when $\SB$ is singular, the simultaneous diagonalization is suggested to solve such a problem \cite{Fukunaga}. In this case one can take advantage by the singularity of $\SB$ to apply the computational trick proposed by Archambeau \textit{et al.}, see Sec.~(\ref{sec:PCA_classes}), since at most $r = \mathrm{rank}(\SB)$ eigenvectors can be found.\\
+
+If the singularity of $\SB$ does not affect the LDA dimensionality reduction, we cannot say the same about the singularity of $\SW$:  SCA and Pattern Recognition literature, points out the same drawback of the LDA, which is known as the {\em Small Sample Size problem} (SSS for short). It occurs when the total number of acquisitions $\numTraces[]$ is less than or equal to the size $\traceLength$ of them. The direct consequence of this problem is the singularity of $\SW$ and the non-applicability of the LDA.\\
+
+If the LDA has seen introduced relatively lately in the SCA literature, the Pattern Recognition community looks for a solution to the SSS problem at least since the early nineties. We browsed some of the proposed solution and chose some of them to introduce, in order to test them over side channel traces.
 
 \subsubsection{Fisherface Method}
-The most popular among the solutions to SSS is the so-called {\em Fisherface} method\footnote{The name is due to the fact that it was proposed and tested for face recognition scopes.} \cite{eigenfaces}.\\
-It simply relies on the combination between PCA and LDA: a standard PCA dimensionality reduction is performed to data, making them pass from dimension $\traceLength$ to dimension $\numTraces[]-\lvert \sensVarSet \rvert$, which is the general maximal rank for $\SW$. In this reduced space $\SW$ is surely invertible and the LDA can be applied.
+The most popular among the solutions to SSS is the so-called {\em Fisherface} method\footnote{The name is due to the fact that it was proposed and tested for face recognition scopes.} \cite{eigenfaces}. It simply relies on the combination between PCA and LDA: a standard PCA dimensionality reduction is performed to data, making them pass from dimension $\traceLength$ to dimension $\numTraces[]-\lvert \sensVarSet \rvert$, which is the general maximal rank for $\SW$. In this reduced space, $\SW$ is very likely to be invertible and the LDA therefore applies.
 
 \subsubsection{$SW$ Null Space Method}
-Chen \textit{et al.} \cite{Chen2000}, that proposed the method to which we will refer as { \em $\SW$ null space method}, exploited an important result of Liu \textit{et al.} \cite{liu1992generalized}: the Fisher criterion function ($\ref{eq:LDA}$), is equivalent (in terms of results), to the following one:
+It has been introduced by Chen {\em et al.} in \cite{Chen2000} and exploits an important result of Liu {\em et al.} \cite{liu1992generalized} who showed that Fisher's criterion \eqref{eq:LDA} is equivalent to:
  \begin{equation}
- \mathrm{argmax}_{\AAlpha} \frac{\AAlpha^T \SB \AAlpha}{\AAlpha^T \SW \AAlpha + \AAlpha^T \SB \AAlpha} \mbox{ .}
+ \AAlpha_1=\mathrm{argmax}_{\AAlpha} \frac{\AAlpha^T \SB \AAlpha}{\AAlpha^T \SW \AAlpha + \AAlpha^T \SB \AAlpha} \mbox{ .}
  \end{equation}
-
-The authors of \cite{Chen2000} pointed out that such a formula is upper-bounded by 1, and that it achieves its maximal value, \textit{i.e.} 1, if and only if  $\AAlpha$ is in the null space of $\SW$. Thus they proposed to first project data onto the null space of $\SW$ and then perform a PCA, \textit{i.e.} select as LDCs the first $\lvert \sensVarSet \rvert - 1$ eigenvectors of the between-class scatter matrix of data into this new space.\\
-More precisely, let $Q = [\vvv_1, \dots, \vvv_{\traceLength - \mathrm{rank}(\SW)}]$ be the matrix of vectors that span the null space of $\SW$. We transform the data $\sss[]{}$ into the new form $\xxx' = QQ^T\xxx$. This maintains the original dimension $\traceLength$ of the data, but let the new within-class matrix $\SW' = QQ^T\SW QQ^T$ be the null $\traceLength \times \traceLength$ matrix. Now we look for the eigenvectors of the new between-class matrix $\SB' = QQ^T\SB QQ^T$. Let $U$ be the matrix containing its first $\lvert \sensVarSet \rvert - 1$ eigenvectors: the LDCs obtained via the $\SW$ null space method are the columns of $QQ^TU$.
+The authors of \cite{Chen2000} point out that such a formula is upper-bounded by 1, and that it achieves its maximal value, \textit{i.e.} 1, if and only if  $\AAlpha$ is in the null space of $\SW$. Thus they propose to first project data onto the null space of $\SW$ and then to perform a PCA, \textit{i.e.} to select as LDCs the first $\lvert \sensVarSet \rvert - 1$ eigenvectors of the between-class scatter matrix of data into this new space. More precisely, let $Q = [\vvv_1, \dots, \vvv_{\traceLength - \mathrm{rank}(\SW)}]$ be the matrix of vectors that span the null space of $\SW$. \cite{Chen2000} proposes to transform the data $\sss[]{}$ into $\xxx' = QQ^T\xxx$. Such a transformation maintains the original dimension $\traceLength$ of the data, but let the new within-class matrix $\SW' = QQ^T\SW QQ^T$ be the null $\traceLength \times \traceLength$ matrix. Afterwards, the method looks for the eigenvectors of the new between-class matrix $\SB' = QQ^T\SB QQ^T$. Let $U$ be the matrix containing its first $\lvert \sensVarSet \rvert - 1$ eigenvectors: the LDCs obtained via the $\SW$ null space method are the columns of $QQ^TU$.
 
 \subsubsection{Direct LDA}
-The {\em Direct LDA method} is introduced in \cite{Yu01adirect}. This method, as the previous one, privileges the low-ranked eigenvectors of $\SW$, but finds prior getting rid of the null space of $\SB$, \textit{i.e.} of those vectors that do not provide any between-class separation of data. \\
-Let $V^T\SB V = D_B$ be the singular value decomposition of $\SB$, and let $V^\star$ be the matrix of the eigenvectors of $\SB$ that are not in its null space, \textit{i.e.} whose eigenvalues are different from zero. Let now $D_B^\star ={V^\star}^T\SB V^\star$; the operation of transforming data $\xxx$ into the form ${D_B^\star}^{1/2}{V^\star}^T\xxx$ {\em spheres} $\SB$, \textit{i.e.} makes the between-class variance ${D_B^\star}^{1/2}{V^\star}^T\SB ' V^\star {D_B^\star}^{1/2} $ be equal to the $(\lvert \sensVarSet \rvert - 1 \times \lvert \sensVarSet \rvert - 1)$ identity matrix. After this transformation the within-class variance assumes the form $\SW' = {D_B^\star}^{1/2}{V^\star}^T\SW ' V^\star {D_B^\star}^{1/2}$. Storing in a matrix $U^\star$ the $\newTraceLength$ lowest-rank eigenvectors, the LDCs obtained via the Direct LDA method are the columns of $V^\star{D_B^\star}^{1/2}{U^\star}^T$. Observe that for the first projection, there is no need to compute the big $\SB$ matrix, because the computational trick of Section~(\ref{sec:PCA_classes}) is applicable.
+As the previous, this method, introduced in \cite{Yu01adirect} privileges the low-ranked eigenvectors of $\SW$, but proposes to firstly project the data onto the rank space of $\SB$, arguing the fact that vectors of the null space of $\SB$ do not provide any between-class separation of data. \\
+Let $D_B=V^T\SB V$ be the singular value decomposition of $\SB$, and let $V^\star$ be the matrix of the eigenvectors of $\SB$ that are not in its null space, \textit{i.e.} whose eigenvalues are different from zero. Let also $D_B^\star$ denotes the matrix ${V^\star}^T\SB V^\star$; transforming the data $\xxx$ into ${D_B^\star}^{1/2}{V^\star}^T\xxx$ makes the between-class variance to be equal to   the $(\lvert \sensVarSet \rvert - 1 \times \lvert \sensVarSet \rvert - 1)$ identity matrix. After this transformation the within-class variance assumes the form $\SW' = {D_B^\star}^{1/2}{V^\star}^T\SW ' V^\star {D_B^\star}^{1/2}$. After storing lowest-rank eigenvectors in a matrix $U^\star$ the $\newTraceLength$, the LDCs obtained via the Direct LDA method are the columns of $V^\star{D_B^\star}^{1/2}{U^\star}^T$. Observe that for the first projection, there is no need to compute the big $\SB$ matrix, because the computational trick of Sec.~\ref{sec:PCA_classes} is applicable.
 
 
 \subsubsection{$\ST$ Spanned Space Method}
-The last variant of LDA that we consider, and to which we will refer as {\em $\ST$ Spanned Space Method} \cite{huang} is actually a variant of the Direct LDA: instead of removing the null space of $\SB$ as first step, this method removes the null space of $\ST = \SB + \SW$. Then it projects data onto the null space of new within-class matrix. A final optional step consists in verifying if after the last projection the between-class variance presents a non-trivial null-space, and in this case, effectuate a further projection removing it.
+The last variant of LDA that we consider has been proposed in \cite{huang} and is actually a variant of the Direct LDA: instead of removing the null space of $\SB$ as first step, this method removes the null space of $\ST = \SB + \SW$. Then, denoting $\SW'$ the within-class matrix in the reduced space, the reduced data are projected onto its null space, i.e. are multiplied by the matrix storing by columns the eigenvectors of $\SW'$ associated to the null eigenvector, thus reduced again. A final optional step consists in verifying if  the between-class matrix presents a non-trivial null-space after the last projection and, in this case, effectuate a further projection removing it.
 
 
 
