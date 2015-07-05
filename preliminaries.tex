@@ -1,26 +1,22 @@
-\section{Preliminaries, Notations and Main Issue}
+\section{Preliminaries and Comparison Framework}\label{sec:preliminaries}
 
-\subsection{Notations}
-\begin{tiny}
-Notations: to rewrite properly
-\begin{itemize}
+%\subsection{Notations}
 
-\item Bold block capitals like $\measuresMatrix$ indicate matrices
-\item Greek or Latin bold lower cases, as $\AAlpha$ or   $\yyy$, indicate vectors
-\item Scalar variables are denoted by ordinary lower cases, like $x$
-\item The entries of a vector will be indicated by the index/indexes of the entry in square brackets, e.g. $\measuresMatrix[i,j]$ or $\AAlpha[i]$
-\medskip
-\item Capital letters as $K$ denote random variables , in bold as $\SSS[]{}$ denote random vectors
-\item The corresponding letter in lower case indicates a realization of the random variable: $k$ is a realization of $K$ and $\sss[]{}$ is a realization of $\SSS[]{}$
-\item The corresponding calligraphic letter $\mathcal{K}$ will denote the finite set random variable $K$ is defined over
-\medskip
-\item Parts of plaintexts $\randPlaintext$, target subkeys $\randKey$ and sensitive variables $\sensRandVar = \targetFunction(\randPlaintext,\randKey)$ are treated and denoted as random variables
-\item Side-Channel measurements corresponding to the manipulations of a sensitive variable $\sensVar$ are also random variables, thus denoted as $\SSS = \SSS []\mid \sensRandVar = \sensVar$, where the corresponding random variable value is an upper index, thus a side-channel trace is denoted by $\sss{}$
-\item In general side-channel measurements are multidimensional real data, $\SSS[]{} \in \mathbb{R}^D$ and are supposed to be zero-mean vectors: $E[\SSS[]] = \textbf{0}$
+%\item 
+%\item 
+%\item Scalar variables are denoted by ordinary lower cases, like $x$
+%\item The entries of a vector will be indicated by the index/indexes of the entry in square brackets, e.g. $\measuresMatrix[i,j]$ or $\AAlpha[i]$
+%\medskip
+%\item Capital letters as $K$ denote random variables , in bold as $\SSS[]{}$ denote random vectors
+%\item The corresponding letter in lower case indicates a realization of the random variable: $k$ is a realization of $K$ and $\sss[]{}$ is a realization of $\SSS[]{}$
+%\item The corresponding calligraphic letter $\mathcal{K}$ will denote the finite set random variable $K$ is defined over
+%\medskip
+%\item Parts of plaintexts $\randPlaintext$, target subkeys $\randKey$ and sensitive variables $\sensRandVar = \targetFunction(\randPlaintext,\randKey)$ are treated and denoted as random variables
+%\item Side-Channel measurements corresponding to the manipulations of a sensitive variable $\sensVar$ are also random variables, thus denoted as $\SSS = \SSS []\mid \sensRandVar = \sensVar$, where the corresponding random variable value is an upper index, thus a side-channel trace is denoted by $\sss{}$
+%\item In general side-channel measurements are multidimensional real data, $\SSS[]{} \in \mathbb{R}^D$ and are supposed to be zero-mean vectors: $E[\SSS[]] = \textbf{0}$
 
-\end{itemize}
-\end{tiny}
 \subsection{Preliminaries}
+In the following bold block capitals $\measuresMatrix$ denote matrices and Greek or Latin bold lower cases, $\AAlpha$ or   $\xxx$, denote real vectors. The $i$-th entry of a vector $\xxx$ is indicated by $\xxx[i]$.\\
 
 A side-channel key recovery adversary, being inspired by the model proposed by Standaert et al. \cite{unifiedFramework}, corresponds to a 5-tuple 
 
@@ -84,7 +80,7 @@ Let $\adversary$ be an adversary and $\guessingEntropy_\adversary(\numTraces[])$
 \end{property}
 In practice this property guarantees that the application of $\extract$ does not discard the informative parts of the traces, those that make $\adversary$ achieve its guessing entropy.
 
-\subsection{The Main Issue:  Compare Effective Extractors}\label{sec:adversary_description}
+\subsection{Compare Effective Extractors}\label{sec:adversary_description}
 
 
 As we have seen in the introduction, the state of the art proposes different techniques to create extractors:  a $T$-test followed by a thresholding, PCA, LDA, etc.\\
