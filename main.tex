@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{algorithm}
 \usepackage{algorithmic}
+\usepackage{url}
 
 
 
@@ -21,7 +22,7 @@
 %\newtheorem{fact}{Fact}[section]
 
 \spnewtheorem{assumption}{Assumption}{\bfseries}{\itshape}
-
+\spnewtheorem{notation}{Notation}{\bfseries}{\itshape}
 
 
 
@@ -84,6 +85,8 @@
 \newcommand{\traceLength}{D}
 \newcommand{\newTraceLength}{C}
 
+\newcommand{\numPoI}{\# PoI}
+
 \newcommand{\covmat}{\textbf{S}}
 
 
@@ -105,6 +108,8 @@
 \newcommand{\SW}{\textbf{S}_{\textbf{W}}}
 \newcommand{\SB}{\textbf{S}_{\textbf{B}}}
 \newcommand{\ST}{\textbf{S}_{\textbf{T}}}
+
+\newcommand{\vvv}{\textbf{v}}
 
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
@@ -141,11 +146,9 @@
 
 \begin{document}
 \title{Work in Progress Paper}
-\author{}
+%\author{}
 \maketitle
-\begin{abstract}
-Abstract, very abstract
-\end{abstract}
+\input{abstract}
 \input{intro}
 \input{preliminaries}
 \input{PCA}
@@ -153,7 +156,7 @@ Abstract, very abstract
 \input{experiments}
 \input{conclusions}
  \bibliographystyle{plain}
- \bibliography{../my_bib}
+ \bibliography{my_bib}
 
 
 %\todototoc
