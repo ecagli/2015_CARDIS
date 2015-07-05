@@ -1,0 +1,152 @@
+\begin{thebibliography}{10}
+
+\bibitem{TAprincipal}
+C.~Archambeau, E.~Peeters, F.-X. Standaert, and J.-J. Quisquater.
+\newblock Template attacks in principal subspaces.
+\newblock In Louis Goubin and Mitsuru Matsui, editors, {\em Cryptographic
+  Hardware and Embedded Systems - CHES 2006}, volume 4249 of {\em Lecture Notes
+  in Computer Science}, pages 1--14. Springer Berlin Heidelberg, 2006.
+
+\bibitem{Batina2012}
+Lejla Batina, Jip Hogenboom, and JasperG.J. van Woudenberg.
+\newblock Getting more from pca: First results of using principal component
+  analysis for extensive power analysis.
+\newblock In Orr Dunkelman, editor, {\em Topics in Cryptology CT-RSA 2012},
+  volume 7178 of {\em Lecture Notes in Computer Science}, pages 383--397.
+  Springer Berlin Heidelberg, 2012.
+
+\bibitem{eigenfaces}
+Peter~N. Belhumeur, Joao~P. Hespanha, and David~J. Kriegman.
+\newblock Eigenfaces vs. fisherfaces: Recognition using class specific linear
+  projection, 1997.
+
+\bibitem{lessIsMore}
+N.~Bruneau, S.~Guilley, A.~Heuser, D.~Marion, and O.~Rioul.
+\newblock Less is more: Dimensionality reduction from a theoretical
+  perspective.
+\newblock In {\em 17th Workshop on Cryptographic Hardware and Embedded Systems
+  (CHES 2015)}, to appear, 2015.
+
+\bibitem{Chari2003}
+Suresh Chari, JosyulaR. Rao, and Pankaj Rohatgi.
+\newblock Template attacks.
+\newblock In Burton~S. Kaliski, Cetin~K. Koc, and Christof Paar, editors, {\em
+  Cryptographic Hardware and Embedded Systems - CHES 2002}, volume 2523 of {\em
+  Lecture Notes in Computer Science}, pages 13--28. Springer Berlin Heidelberg,
+  2003.
+
+\bibitem{Chen2000}
+Li-Fen Chen, Hong-Yuan~Mark Liao, Ming-Tat Ko, Ja-Chen Lin, and Gwo-Jong Yu.
+\newblock A new lda-based face recognition system which can solve the small
+  sample size problem.
+\newblock {\em Pattern Recognition}, 33(10):1713 -- 1726, 2000.
+
+\bibitem{choudaryefficient}
+Omar Choudary and Markus~G Kuhn.
+\newblock Efficient stochastic methods: Profiled attacks beyond 8 bits.
+\newblock {\em {IACR} Cryptology ePrint Archive}, 2014.
+
+\bibitem{choudary2014efficient}
+Omar Choudary and Markus~G Kuhn.
+\newblock Efficient template attacks.
+\newblock In {\em Smart Card Research and Advanced Applications}, pages
+  253--270. Springer, 2014.
+
+\bibitem{disassembler}
+Thomas Eisenbarth, Christof Paar, and Bjorn Weghenkel.
+\newblock Building a side channel based disassembler.
+\newblock In MarinaL. Gavrilova, C.J.Kenneth Tan, and EdwardDavid Moreno,
+  editors, {\em Transactions on Computational Science X}, volume 6340 of {\em
+  Lecture Notes in Computer Science}, pages 78--99. Springer Berlin Heidelberg,
+  2010.
+
+\bibitem{fisher1938statistical}
+Ronald~A Fisher.
+\newblock The statistical utilization of multiple measurements.
+\newblock {\em Annals of eugenics}, 8(4):376--386, 1938.
+
+\bibitem{Fukunaga}
+Keinosuke Fukunaga.
+\newblock {\em Introduction to Statistical Pattern Recognition (2Nd Ed.)}.
+\newblock Academic Press Professional, Inc., San Diego, CA, USA, 1990.
+
+\bibitem{huang}
+Rui Huang, Qingshan Liu, Hanqing Lu, and Songde Ma.
+\newblock Solving the small sample size problem of lda.
+\newblock In {\em Pattern Recognition, 2002. Proceedings. 16th International
+  Conference on}, volume~3, pages 29--32 vol.3, 2002.
+
+\bibitem{karsmakers2009side}
+Peter Karsmakers, Benedikt Gierlichs, Kristiaan Pelckmans, Katrien De~Cock,
+  Johan Suykens, Bart Preneel, and Bart De~Moor.
+\newblock Side channel attacks on cryptographic devices as a classification
+  problem.
+\newblock Technical report, COSIC technical report, 2009.
+
+\bibitem{liu1992generalized}
+Ke~Liu, Yong-Qing Cheng, and Jing-Yu Yang.
+\newblock A generalized optimal set of discriminant vectors.
+\newblock {\em Pattern Recognition}, 25(7):731--739, 1992.
+
+\bibitem{massey1994guessing}
+James~L Massey.
+\newblock Guessing and entropy.
+\newblock In {\em Information Theory, 1994. Proceedings., 1994 IEEE
+  International Symposium on}, page 204. IEEE, 1994.
+
+\bibitem{SCAclassProbl}
+Dimitrios Mavroeidis, Lejla Batina, Twan van Laarhoven, and Elena Marchiori.
+\newblock {PCA}, eigenvector localization and clustering for side-channel
+  attacks on cryptographic hardware devices.
+\newblock In PeterA. Flach, Tijl De~Bie, and Nello Cristianini, editors, {\em
+  Machine Learning and Knowledge Discovery in Databases}, volume 7523 of {\em
+  Lecture Notes in Computer Science}, pages 253--268. Springer Berlin
+  Heidelberg, 2012.
+
+\bibitem{DBLP:journals/jcss/NisanZ96}
+Noam Nisan and David Zuckerman.
+\newblock Randomness is linear in space.
+\newblock {\em J. Comput. Syst. Sci.}, 52(1):43--52, 1996.
+
+\bibitem{o2014chipwhisperer}
+Colin O'Flynn and Zhizhang~David Chen.
+\newblock Chipwhisperer: An open-source platform for hardware embedded security
+  research.
+\newblock In {\em Constructive Side-Channel Analysis and Secure Design}, pages
+  243--260. Springer, 2014.
+
+\bibitem{DPAcontest}
+TELECOM ParisTech.
+\newblock Dpa contest 4.
+\newblock http://www.DPAcontest.org/v4/.
+
+\bibitem{specht}
+Robert Specht, Johann Heyszl, Martin Kleinsteuber, and Georg Sig.
+\newblock Improving non-profiled attacks on exponentiations based on clustering
+  and extracting leakage from multi-channel high-resolution {EM} measurements.
+\newblock In {\em Sixth International Workshop on Constructive Side-Channel
+  Analysis and Secure Design (COSADE 2015)}, 2015.
+
+\bibitem{Standaert2008}
+Fran\c{c}ois-Xavier Standaert and Cedric Archambeau.
+\newblock Using subspace-based template attacks to compare and combine power
+  and electromagnetic information leakages.
+\newblock In Elisabeth Oswald and Pankaj Rohatgi, editors, {\em Cryptographic
+  Hardware and Embedded Systems CHES 2008}, volume 5154 of {\em Lecture Notes
+  in Computer Science}, pages 411--425. Springer Berlin Heidelberg, 2008.
+
+\bibitem{unifiedFramework}
+Fran{\c{c}}ois-Xavier Standaert, TalG. Malkin, and Moti Yung.
+\newblock A unified framework for the analysis of side-channel key recovery
+  attacks.
+\newblock In Antoine Joux, editor, {\em Advances in Cryptology - EUROCRYPT
+  2009}, volume 5479 of {\em Lecture Notes in Computer Science}, pages
+  443--461. Springer Berlin Heidelberg, 2009.
+
+\bibitem{Yu01adirect}
+Hua Yu and Jie Yang.
+\newblock A direct {LDA} algorithm for high-dimensional data with application
+  to face recognition.
+\newblock {\em Pattern Recognition}, 34:2067--2070, 2001.
+
+\end{thebibliography}
