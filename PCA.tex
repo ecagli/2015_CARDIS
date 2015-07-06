@@ -43,19 +43,19 @@ Choosing the PCs exploiting the EGV consists in fixing a wished {\em Cumulative 
 \begin{equation}
 \mbox{EGV}(\AAlpha_1) +\mbox{EGV}(\AAlpha_2) + \dots +\mbox{EGV}(\AAlpha_\newTraceLength) \geq \beta \mbox{ .}
 \end{equation}
-However, if the adversary has a constraint for the reduced dimension $\newTraceLength$, the EGV notion simply suggests to keep the first $\newTraceLength$ components, tanking for granted that the optimal way to chose PCs is in their natural order. Nevertheless, this assumption is not always confirmed in SCA context: in some works, researchers have already remarked that the first components sometimes contain more noise than information \cite{Batina2012,specht} and it is worth discarding them. For the sake of providing a first example of this behaviour on publicly accessible traces, we applied a class-oriented PCA on 3000 traces from the DPA contest v4 \cite{DPAcontest}; we focused over a small 1000-dimensional window in which, in complete knowledge about masks and other countermeasures, information about the first Sbox processing leaks (during the first round). In Fig.~(\ref{fig:DPAcontest}) the first and the sixth PCs are plotted. It may be noticed that the first component indicates that one can attend a high variance by exploiting the regularity of the traces, given by the clock signal, while the sixth one has high coefficients localised in a small time interval, very likely to signalize the instants in which the target sensitive variable leaks.
+However, if the adversary has a constraint for the reduced dimension $\newTraceLength$, the EGV notion simply suggests to keep the first $\newTraceLength$ components, tanking for granted that the optimal way to chose PCs is in their natural order. Nevertheless, this assumption is not always confirmed in SCA context: in some works, researchers have already remarked that the first components sometimes contain more noise than information \cite{Batina2012,specht} and it is worth discarding them. For the sake of providing a first example of this behaviour on publicly accessible traces, we applied a class-oriented PCA on 3000 traces from the DPA contest v4 \cite{DPAcontest}; we focused over a small 1000-dimensional window in which, in complete knowledge about masks and other countermeasures, information about the first Sbox processing leaks (during the first round). In Fig.~\ref{fig:DPAcontest} the first and the sixth PCs are plotted. It may be noticed that the first component indicates that one can attend a high variance by exploiting the regularity of the traces, given by the clock signal, while the sixth one has high coefficients localised in a small time interval, very likely to signalize the instants in which the target sensitive variable leaks.
 
 \begin{figure}
-\includegraphics[width=.5\textwidth]{figures/PC_1_10000_198001_199000.png} 
-\includegraphics[width=.5\textwidth]{figures/PC_6_10000_198001_199000.png} 
+\includegraphics[width=.45\textwidth]{figures/DPAcontestPC1.pdf} 
+\includegraphics[width=.45\textwidth]{figures/DPAcontestPC6.pdf} 
 \caption{First and sixth PCs in DPA contest v4 trace set}\label{fig:DPAcontest}
 \end{figure}
-To the best of our knowledge, until now only one method adapted to SCA context has been proposed to automatically chose PCs\cite{SCAclassProbl} while dealing with the issue raised in Fig.~(\ref{fig:DPAcontest}). It is based on the following assumption:
+To the best of our knowledge, until now only one method adapted to SCA context has been proposed to automatically chose PCs \cite{SCAclassProbl} while dealing with the issue raised in Fig.~\ref{fig:DPAcontest}. It is based on the following assumption:
 \begin{assumption}\label{assum:local}
 The leaking side-channel information is localised in few points of the acquired trace.
 \end{assumption}
 In the rest of the paper, we conduct our own analyses under Assumption \ref{assum:local} that we think to be reasonable in SCA contexts where the goal of the security developers is to minimize the number of leaking points.
-Under this assumption, the authors of \cite{SCAclassProbl} propose a measure to evaluate the eigenvectors' {\em localization}. It is called {\em Inverse Participation Ratio} (IPR) and is defined as follows:
+Under this assumption, the authors of \cite{SCAclassProbl} propose a measure to evaluate the eigenvectors {\em localization}. It is called {\em Inverse Participation Ratio} (IPR) and is defined as follows:
 \begin{equation}
 \mathrm{IPR}(\AAlpha_i) = \sum_{t=1}^\traceLength \AAlpha_i[t]^4 \mbox{ .}
 \end{equation}
@@ -87,19 +87,19 @@ The {\em Explained Local Variance} of a PC $\AAlpha_i$ in a sample $j$, is defin
 \end{equation}
 \end{definition}
 \begin{figure}
-\includegraphics[width=0.31\textwidth]{figures/firstPC.pdf} 
-\includegraphics[width=0.31\textwidth]{figures/secondPC.pdf} 
-\includegraphics[width=0.31\textwidth]{figures/thirdPC.pdf} \\
-\includegraphics[width=0.31\textwidth]{figures/fourthPC.pdf} 
-\includegraphics[width=0.31\textwidth]{figures/fifthPC.pdf} 
-\includegraphics[width=0.31\textwidth]{figures/sixthPC.pdf} 
+\includegraphics[width=0.31\textwidth]{figures/PC1.pdf} 
+\includegraphics[width=0.31\textwidth]{figures/PC2.pdf} 
+\includegraphics[width=0.31\textwidth]{figures/PC3.pdf} \\
+\includegraphics[width=0.31\textwidth]{figures/PC4.pdf} 
+\includegraphics[width=0.31\textwidth]{figures/PC5.pdf} 
+\includegraphics[width=0.31\textwidth]{figures/PC6.pdf} 
 \caption{The first six PCs.}\label{fig:6components}
 \end{figure}
-It may be observed that the sum over all the trace samples ELVs of a PC equals the EGV of the considered PC. If we operate such a sum for each PC in a cumulative way and in decreasing order over the coefficients starting from the one that holds the maximal ELV, we obtain a complete description of the trend followed by each component to achieve its EGV. As we can see in Fig.~(\ref{fig:ELVcumulative}), where such cumulative ELVs are represented, the first 3 components are much slower in achieving their final EGV, while the $4^\text{th}$, the $5^\text{th}$ and the $6^\text{th}$ achieve a large part of their final EGVs very quickly ({\em i.e.} by adding the ELV contribution of much less time samples). This implies that the EGV of the $4^\text{th}$, the $5^\text{th}$ and the $6^\text{th}$ only essentially depends on a very few time samples. This observation, combined with the Assumption \ref{assum:local}, suggests that they are more suitable for SCA than the three first ones. To validate this statement, it suffices to look at the form of such components (Fig.~(\ref{fig:6components})): the leading ones are very influenced by the clock, while the latests are well localised over the leaking points.\\
+It may be observed that the sum over all the trace samples ELVs of a PC equals the EGV of the considered PC. If we operate such a sum for each PC in a cumulative way and in decreasing order over the coefficients starting from the one that holds the maximal ELV, we obtain a complete description of the trend followed by each component to achieve its EGV. As we can see in Fig.~\ref{fig:ELVcumulative}, where such cumulative ELVs are represented, the first 3 components are much slower in achieving their final EGV, while the $4^\text{th}$, the $5^\text{th}$ and the $6^\text{th}$ achieve a large part of their final EGVs very quickly ({\em i.e.} by adding the ELV contribution of much less time samples). This implies that the EGV of the $4^\text{th}$, the $5^\text{th}$ and the $6^\text{th}$ only essentially depends on a very few time samples. This observation, combined with the Assumption \ref{assum:local}, suggests that they are more suitable for SCA than the three first ones. To validate this statement, it suffices to look at the form of such components (Fig.~\ref{fig:6components}): the leading ones are very influenced by the clock, while the latests are well localised over the leaking points.\\
 
 Operating a selection of components via ELV, in analogy with the EGV, requires to fix the reduced space dimension $\newTraceLength$, or a threshold $\beta$ for the cumulative ELV. In the first case, the maximal ELVs of each PC are compared, and the $\newTraceLength$ components achieving the highest values of such ELVs are chosen. In the second case, all couples (PC, time sample) are sorted in decreasing order with respect to their ELV, and summed up until the threshold $\beta$ is achieved. Then only PCs contributing in this sum are selected. \\
 
-The interesting property of ELV of being a score associated not only to the whole components, but to each of their coefficients, can be exploited to further select, within a selected PC, the non-significant points, {\em i.e.} those with a low ELV, to be setted to zero. That is a natural way to exploit the ELV score in order to operate a sort of {\em denoising} for the reduced data, making them depend only on significant time samples. In Sec.~\ref{sec:experiments} we will test the performances of an attack varying the number of time samples involved in the computation of the reduced data, and showing that such a denoising processing might impact significantly. 
+We remark that the ELV is a score associated not only to the whole components, but to each of their coefficients. This interesting property can be exploited to further select, within a selected PC, the non-significant points, {\em i.e.} those with a low ELV, to be setted to zero. That is a natural way to exploit the ELV score in order to operate a sort of {\em denoising} for the reduced data, making them depend only on significant time samples. In Sec.~\ref{sec:experiments} we will test the performances of an attack varying the number of time samples involved in the computation of the reduced data, and showing that such a denoising processing might impact significantly. 
  
 
 

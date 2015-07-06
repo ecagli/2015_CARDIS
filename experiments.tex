@@ -1,5 +1,5 @@
 \section{Experimental Results}\label{sec:experiments}
-This section follows the approach presented in Section Sec.~\ref{sec:adversary_description} to compare the different PCA and LDA experiments. For our experiences we consider four scenarios: in each one, three of the four parameters $\numTraces[], \numTraces[]', \newTraceLength, \numPoI$ are fixed and one varies. For those in which $\numTraces[]'$ is fixed, the value of $\numTraces[]'$ is chosen high enough to avoid the SSS problem; then, the extensions of LDA presented in Sec.~(\ref{sec:SSS}) are not evaluated\footnote{This study is let open for an extended version of this paper.}. As a consequence, for these 3 scenarios, we always perform the LDA in a favourable situation, which makes expect the LDA to be more efficient than the PCA in our experiments. Our goal is therefore only to study whether the PCA can be made almost as efficient than the LDA thanks to the component selection methods discussed in Sec.\ref{sec:ELV}
+This section follows the approach presented in Section Sec.~\ref{sec:adversary_description} to compare the different PCA and LDA experiments. For our experiences we consider four scenarios: in each one, three of the four parameters $\numTraces[], \numTraces[]', \newTraceLength, \numPoI$ are fixed and one varies. For those in which $\numTraces[]'$ is fixed, the value of $\numTraces[]'$ is chosen high enough to avoid the SSS problem; then, the extensions of LDA presented in Sec.~(\ref{sec:SSS}) are not evaluated.\footnote{This study is let open for an extended version of this paper.} As a consequence, for these three scenarios, we always perform the LDA in a favourable situation, which makes expect the LDA to be more efficient than the PCA in our experiments. Our goal is therefore only to study whether the PCA can be made almost as efficient than the LDA thanks to the component selection methods discussed in Sec.\ref{sec:ELV}
 
 \subsubsection{Scenario 1.}
 \begin{figure}
@@ -16,7 +16,7 @@ To analyse the dependence between our extraction methods, presented in Sec.~\ref
 \includegraphics[width=0.5\textwidth]{figures/Criterion2notSSS.pdf} 
 \caption{Guessing Entropy as function of the number of profiling traces per class, for different extraction methods: on the left the LDA is substituted by its extensions to handle the SSS problem.}\label{fig:2}
 \end{figure}
-Now we test the behaviour of the extraction methods, as function of the number $N_p$ of profiling traces per class available. The number of components $\newTraceLength$ is still fixed to 3, and $\numPoI=3996$ again. This scenario has to be divided into two parts: if $N_p\leq 15$, then $\numTraces[]'<\traceLength$ and the SSS problem occurs. Thus, in this case we will test the four extensions of LDA presented in Sec.~\ref{sec:SSS}, associated to either the standard selection, to which we abusively refer as EGV \footnote{It consists in keeping the first $\newTraceLength$ LDCs, except for the Direct LDA, which asks to keep the last LDCs.}, and to the IPR selection.  We compare them to the class-oriented PCA associated to the same selection methods. The ELV selection is not performed in this case because, for some of the techniques extending LDA, the projecting LDCs are not associated to some eigenvalues in a meaningful way. On the contrary, if $N_p\geq 16$ there is no need to approximate LDA technique, so the classical one is performed. Results for this scenario are shown in Fig.\ref{fig:2}. It may be noticed that the combination class-oriented PCA + IPR does not suffer the lack of profiling traces; anyway, it is outperformed by the Chen method in association to EGV. The Direct LDA method also provides a good alternative, while the other tested methods do not show a stable behaviour. The results in absence of the SSS problem confirm that the standard PCA is not adapted to SCA, even when provided with more profiling traces. As expected, it also confirms that among class-oriented PCA and LDA, LDA converges faster.
+Now we test the behaviour of the extraction methods, as function of the number $N_p$ of profiling traces per class available. The number of components $\newTraceLength$ is still fixed to 3, and $\numPoI=3996$ again. This scenario has to be divided into two parts: if $N_p\leq 15$, then $\numTraces[]'<\traceLength$ and the SSS problem occurs. Thus, in this case we will test the four extensions of LDA presented in Sec.~\ref{sec:SSS}, associated to either the standard selection, to which we abusively refer as EGV,\footnote{It consists in keeping the first $\newTraceLength$ LDCs, except for the Direct LDA, which asks to keep the last LDCs.} and to the IPR selection.  We compare them to the class-oriented PCA associated to the same selection methods. The ELV selection is not performed in this case because, for some of the techniques extending LDA, the projecting LDCs are not associated to some eigenvalues in a meaningful way. On the contrary, if $N_p\geq 16$ there is no need to approximate LDA technique, so the classical one is performed. Results for this scenario are shown in Fig.~\ref{fig:2}. It may be noticed that the combination class-oriented PCA + IPR does not suffer the lack of profiling traces; anyway, it is outperformed by the Chen method in association to EGV. The Direct LDA method also provides a good alternative, while the other tested methods do not show a stable behaviour. The results in absence of the SSS problem confirm that the standard PCA is not adapted to SCA, even when provided with more profiling traces. As expected, it also confirms that among class-oriented PCA and LDA, LDA converges faster.
 
 
 
@@ -24,7 +24,7 @@ Now we test the behaviour of the extraction methods, as function of the number $
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{figures/Criterion3.pdf}
-\caption{Guessing Entropy as function of the number of the traces size after reduction.}\label{fig:3}
+\caption{Guessing Entropy as function of the number of the traces size after reduction. Figure on the right is a zoom of the one on the left.}\label{fig:3}
 \end{figure}
 
 
@@ -40,8 +40,46 @@ Let  $\newTraceLength$ be now variable and let the other parameters be fixed as 
 \end{figure}
 
 This is the only scenario in which we allow the ELV selection method to not only select the components to keep but also to modify them, keeping only some coefficients within each component, setting the other to zero. Thus, we select couples \textit{(component, time sample)} in order of decreasing ELV, allowing the presence of only $\newTraceLength = 3$ components and $\numPoI$ globally considered, {i.e.} we impose that the matrix containing the 3 selected components as columns has exactly $\numPoI$ rows different from the zero vector. 
-Looking at Fig.\ref{fig:4} we might observe that the LDA allows to achieve the maximal guessing entropy with only 1 PoI in each of the 3 selected components. 
+Looking at Fig.~\ref{fig:4} we might observe that the LDA allows to achieve the maximal guessing entropy with only 1 PoI in each of the 3 selected components. 
 Actually, adding PoIs worsen its performances, which is coherent with the assumption that the vulnerable information leaks in only a few points, that are excellently detected by the LDA, and that adding contribution from other points raises the noise which is then compensated by the contributions of other noisy points, in a very delicate balance. Such a behaviour is clearly visible in standard PCA case: the first 10 points considered raise the level of noise, that is then balanced by the last 1000 points.
 
-
-
+\begin{center}
+\begin{tiny}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+& minimize $N$ & minimize $N'$ (SSS) & minimize $N'$ (not SSS) & minimize $C$ \\
+\hline
+PCA standard + EGV & - &  &- &- \\
+\hline
+\rowcolor[gray]{0.8}  PCA standard + ELV & - & &- &- \\
+\hline
+PCA standard + IPR &- & &- &+ \\
+\hline
+PCA class + EGV & - &- &- &- \\
+\hline
+\rowcolor[gray]{0.8} PCA class + ELV &+ & &$\bigstar$ & + \\
+\hline 
+PCA class + IPR & + &$\bigstar$ &+ &- \\
+\hline 
+LDA + EGV &$\bigstar$ & & + & $\bigstar$\\
+\hline 
+\rowcolor[gray]{0.8} LDA + ELV & + &  & + & $\bigstar$\\
+\hline 
+LDA + IPR & + & &+ & $\bigstar$ \\
+\hline 
+\rowcolor[gray]{0.8} Fisherface & &- & & \\
+\hline 
+\rowcolor[gray]{0.8} Chen + EGV & &$\bigstar$ & & \\
+\hline 
+\rowcolor[gray]{0.8} Chen + IPR & &+ & & \\
+\hline 
+\rowcolor[gray]{0.8} Direct LDA + EGV & & $\bigstar$& & \\
+\hline 
+\rowcolor[gray]{0.8} Direct LDA + IPR & &+& & \\
+\hline
+\rowcolor[gray]{0.8} huang & &- & & \\
+\hline
+\end{tabular}
+\end{tiny}
+\captionof{table}{Overview of extractors performances in tested situations. A $\bigstar$ denotes the best method, a $+$ a method comparable to the best, a $-$ a method showing lower performances. Methods introduced in this paper are highlighted.}
+\end{center}
