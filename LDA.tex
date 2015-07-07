@@ -34,7 +34,7 @@ In the following subsection we will present a well-known problem that affects th
 
 
 \subsection{The Small Sample Size Problem}\label{sec:SSS}
-In the special case in which the matrix $\SB$ is invertible, the generalized eigenvalue problem is convertible in a regular one, as in \cite{Standaert2008}. On the contrary, when $\SB$ is singular, the simultaneous diagonalization is suggested to solve such a problem \cite{Fukunaga}. In this case one can take advantage by the singularity of $\SB$ to apply the computational trick proposed by Archambeau \textit{et al.}, see Sec.~(\ref{sec:PCA_classes}), since at most $r = \mathrm{rank}(\SB)$ eigenvectors can be found.\\
+In the special case in which the matrix $\SB$ is invertible, the generalized eigenvalue problem is convertible in a regular one, as in \cite{Standaert2008}. On the contrary, when $\SB$ is singular, the simultaneous diagonalization is suggested to solve such a problem \cite{Fukunaga}. In this case one can take advantage by the singularity of $\SB$ to apply the computational trick proposed by Archambeau et al., see Sec.~(\ref{sec:PCA_classes}), since at most $r = \mathrm{rank}(\SB)$ eigenvectors can be found.\\
 
 If the singularity of $\SB$ does not affect the LDA dimensionality reduction, we cannot say the same about the singularity of $\SW$:  SCA and Pattern Recognition literature, points out the same drawback of the LDA, which is known as the {\em Small Sample Size problem} (SSS for short). It occurs when the total number of acquisitions $\numTraces[]$ is less than or equal to the size $\traceLength$ of them.\footnote{It can happen for example when attacking an RSA implementation, where the acquisitions are often huge (of the order of 1,000,000 points) and the number of measurements may be small when the SNR is good, implying that a good GE can be achieved with a small $N$.} The direct consequence of this problem is the singularity of $\SW$ and the non-applicability of the LDA. \\
 
@@ -44,7 +44,7 @@ If the LDA has seen introduced relatively lately in the SCA literature, the Patt
 The most popular among the solutions to SSS is the so-called {\em Fisherface} method\footnote{The name is due to the fact that it was proposed and tested for face recognition scopes.} \cite{eigenfaces}. It simply relies on the combination between PCA and LDA: a standard PCA dimensionality reduction is performed to data, making them pass from dimension $\traceLength$ to dimension $\numTraces[]-\lvert \sensVarSet \rvert$, which is the general maximal rank for $\SW$. In this reduced space, $\SW$ is very likely to be invertible and the LDA therefore applies.
 
 \subsubsection{$SW$ Null Space Method}
-It has been introduced by Chen {\em et al.} in \cite{Chen2000} and exploits an important result of Liu {\em et al.} \cite{liu1992generalized} who showed that Fisher's criterion \eqref{eq:LDA} is equivalent to:
+It has been introduced by Chen et al. in \cite{Chen2000} and exploits an important result of Liu et al. \cite{liu1992generalized} who showed that Fisher's criterion \eqref{eq:LDA} is equivalent to:
  \begin{equation}
  \AAlpha_1=\mathrm{argmax}_{\AAlpha} \frac{\AAlpha^T \SB \AAlpha}{\AAlpha^T \SW \AAlpha + \AAlpha^T \SB \AAlpha} \mbox{ .}
  \end{equation}

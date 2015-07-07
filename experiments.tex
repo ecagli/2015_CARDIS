@@ -1,5 +1,11 @@
 \section{Experimental Results}\label{sec:experiments}
-This section follows the approach presented in Section Sec.~\ref{sec:adversary_description} to compare the different PCA and LDA experiments. For our experiences we consider four scenarios: in each one, three of the four parameters $\numTraces[], \numTraces[]', \newTraceLength, \numPoI$ are fixed and one varies. For those in which $\numTraces[]'$ is fixed, the value of $\numTraces[]'$ is chosen high enough to avoid the SSS problem; then, the extensions of LDA presented in Sec.~(\ref{sec:SSS}) are not evaluated.\footnote{This study is let open for an extended version of this paper.} As a consequence, for these three scenarios, we always perform the LDA in a favourable situation, which makes expect the LDA to be more efficient than the PCA in our experiments. Our goal is therefore only to study whether the PCA can be made almost as efficient than the LDA thanks to the component selection methods discussed in Sec.\ref{sec:ELV}
+
+In this section we to effectuate a comparison between the different extractors provided by the PCA and the LDA in association with the different techniques of selection of components. We organized our experiments focusing on a given adversary, whose aim is to optimally choose an extraction method we respect to the four criteria presented in Sec.~\ref{sec:fourCriteria}. Thus, we consider four scenarios: in each one, three of the four parameters $\numTraces[], \numTraces[]', \newTraceLength, \numPoI$ are fixed and one varies. For those in which $\numTraces[]'$ is fixed, the value of $\numTraces[]'$ is chosen high enough to avoid the SSS problem; then, the extensions of LDA presented in Sec.~(\ref{sec:SSS}) are not evaluated.\footnote{This study is let open for an extended version of this paper.} As a consequence, for these three scenarios, we always perform the LDA in a favourable situation, which makes expect the LDA to be more efficient than the PCA in our experiments. Our goal is therefore only to study whether the PCA can be made almost as efficient than the LDA thanks to the component selection methods discussed in Sec.~\ref{sec:ELV}. 
+
+\subsubsection{The testing adversary.}  Our testing adversary attacks an 8-bit AVR microprocessor Atmega328P and acquires power-consumption traces via the ChipWhispered platform \cite{o2014chipwhisperer}. The target device stores a secret 128-bits key and performs the first steps of an AES: the reading of 16 bytes of the plaintext, the AddRoundKey step and the AES Sbox. It has been programmed twice: two different keys are stored in the device memory during the acquisition of the profiling and of the attack traces, to simulate the situation of two identical devices storing a different secret. The size of the traces equals $\traceLength = 3996$. The target sensitive variable is the output of the first Sbox byte, but, since the key is fixed also during the profiling phase, and both Xor and Sbox operations are bijective, we expect to detect three interesting regions: the reading of the first byte of the plaintext, the first AddRoundKey and the first Sbox. We consider an {\em identity classification} leaking function (i.e. we make minimal assumption on the leakage function), which implies that the 256 possible values of the Sbox output gives birth to 256 classes. For each class we assume that the adversary acquires the same number $N_p$ of traces, \textit{i.e.} $\numTraces[]' = N_p\times 256$.\\
+After the application of the extractor $\extract$, the trace size is reduced to $\newTraceLength$. Then the attacker performs a Bayesian Template Attack \cite{Chari2003}, using $\newTraceLength$-variate Gaussian templates.
+
+
 
 \subsubsection{Scenario 1.}
 \begin{figure}
@@ -43,43 +49,46 @@ This is the only scenario in which we allow the ELV selection method to not only
 Looking at Fig.~\ref{fig:4} we might observe that the LDA allows to achieve the maximal guessing entropy with only 1 PoI in each of the 3 selected components. 
 Actually, adding PoIs worsen its performances, which is coherent with the assumption that the vulnerable information leaks in only a few points, that are excellently detected by the LDA, and that adding contribution from other points raises the noise which is then compensated by the contributions of other noisy points, in a very delicate balance. Such a behaviour is clearly visible in standard PCA case: the first 10 points considered raise the level of noise, that is then balanced by the last 1000 points.
 
-\begin{center}
+\begin{table}
 \begin{tiny}
-\begin{tabular}{|c|c|c|c|c|}
+\begin{center}\begin{tabular}{|c|c|c|c|c|c|}
 \hline
-& minimize $N$ & minimize $N'$ (SSS) & minimize $N'$ (not SSS) & minimize $C$ \\
+&&\multicolumn{4}{|>{\columncolor[gray]{0.7}}c|}{Parameter to minimize}\\
 \hline
-PCA standard + EGV & - &  &- &- \\
+\multicolumn{1}{|>{\columncolor[gray]{0.7}}c|}{Method}&\multicolumn{1}{|>{\columncolor[gray]{0.7}}c|}{Selection}& $N$ &  $N'$ (SSS) &  $N'$ (not SSS) &  $C$ \\
 \hline
-\rowcolor[gray]{0.8}  PCA standard + ELV & - & &- &- \\
+PCA standard & EGV & {\bf -} &  &{\bf -} &{\bf -} \\
 \hline
-PCA standard + IPR &- & &- &+ \\
+PCA standard &\multicolumn{1}{|>{\columncolor[gray]{0.8}}c|}{ELV} & \multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{{\bf -}} & &\multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{{\bf -}} &\multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{{\bf -}} \\
 \hline
-PCA class + EGV & - &- &- &- \\
+PCA standard & IPR &{\bf -} & &{\bf -} &{\bf +} \\
 \hline
-\rowcolor[gray]{0.8} PCA class + ELV &+ & &$\bigstar$ & + \\
-\hline 
-PCA class + IPR & + &$\bigstar$ &+ &- \\
-\hline 
-LDA + EGV &$\bigstar$ & & + & $\bigstar$\\
-\hline 
-\rowcolor[gray]{0.8} LDA + ELV & + &  & + & $\bigstar$\\
-\hline 
-LDA + IPR & + & &+ & $\bigstar$ \\
-\hline 
-\rowcolor[gray]{0.8} Fisherface & &- & & \\
-\hline 
-\rowcolor[gray]{0.8} Chen + EGV & &$\bigstar$ & & \\
-\hline 
-\rowcolor[gray]{0.8} Chen + IPR & &+ & & \\
-\hline 
-\rowcolor[gray]{0.8} Direct LDA + EGV & & $\bigstar$& & \\
-\hline 
-\rowcolor[gray]{0.8} Direct LDA + IPR & &+& & \\
+PCA class & EGV & {\bf -} &{\bf -} &{\bf -} &{\bf -} \\
 \hline
-\rowcolor[gray]{0.8} huang & &- & & \\
+PCA class & \multicolumn{1}{|>{\columncolor[gray]{0.8}}c|}{ELV} &\multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{{\bf +}} & &\multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{$\bigstar$} &\multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{{\bf +}} \\
+\hline 
+PCA class & IPR & {\bf {\bf +}} &$\bigstar$ &{\bf +} &{\bf -} \\
+\hline 
+LDA & EGV &$\bigstar$ & & {\bf +} & $\bigstar$\\
+\hline 
+LDA & \multicolumn{1}{|>{\columncolor[gray]{0.8}}c|}{ELV} & \multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{{\bf +}} &  & \multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{{\bf +}} & \multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{$\bigstar$}\\
+\hline 
+LDA & IPR & {\bf +} & &{\bf +} & $\bigstar$ \\
+
+\hline 
+\multicolumn{1}{|>{\columncolor[gray]{0.8}}c|}{Chen}  & EGV & &\multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{$\bigstar$ } & & \\
+\hline 
+\multicolumn{1}{|>{\columncolor[gray]{0.8}}c|}{Chen}  & IPR & &\multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{{\bf +}} & & \\
+\hline 
+\multicolumn{1}{|>{\columncolor[gray]{0.8}}c|}{Direct LDA} & EGV & & $\bigstar$& & \\
+\hline 
+\multicolumn{1}{|>{\columncolor[gray]{0.8}}c|}{Direct LDA} & IPR & &\multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{{\bf +}}& & \\
 \hline
-\end{tabular}
+\multicolumn{2}{|>{\columncolor[gray]{0.8}}c|}{Fisherface} & &\multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{{\bf -}} & & \\
+\hline 
+\multicolumn{2}{|>{\columncolor[gray]{0.8}}c|}{Huang}  & &\multicolumn{1}{|>{\columncolor[gray]{0.9}}c|}{{\bf -}} & & \\
+\hline
+\end{tabular}\end{center}
 \end{tiny}
-\captionof{table}{Overview of extractors performances in tested situations. A $\bigstar$ denotes the best method, a $+$ a method comparable to the best, a $-$ a method showing lower performances. Methods introduced in this paper are highlighted.}
-\end{center}
+\caption{Overview of extractors performances in tested situations. A $\bigstar$ denotes the best method, a ${\bf +}$ a method comparable to the best, a ${\bf -}$ a method showing lower performances. Methods introduced in this paper are highlighted.}
+\end{table}
