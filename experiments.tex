@@ -25,13 +25,13 @@ To analyse the dependence between our extraction methods, presented in Sec.~\ref
 Now we test the behaviour of the extraction methods, as function of the number $N_p$ of profiling traces per class available. The number of components $\newTraceLength$ is still fixed to 3, and $\numPoI=3996$ again. This scenario has to be divided into two parts: if $N_p\leq 15$, then $\numTraces[]'<\traceLength$ and the SSS problem occurs. Thus, in this case we will test the four extensions of LDA presented in Sec.~\ref{sec:SSS}, associated to either the standard selection, to which we abusively refer as EGV,\footnote{It consists in keeping the first $\newTraceLength$ LDCs, except for the Direct LDA, which asks to keep the last LDCs.} and to the IPR selection.  We compare them to the class-oriented PCA associated to the same selection methods. The ELV selection is not performed in this case because, for some of the techniques extending LDA, the projecting LDCs are not associated to some eigenvalues in a meaningful way. On the contrary, if $N_p\geq 16$ there is no need to approximate LDA technique, so the classical one is performed. Results for this scenario are shown in Fig.~\ref{fig:2}. It may be noticed that the combination class-oriented PCA + IPR does not suffer the lack of profiling traces; anyway, it is outperformed by the Chen method in association to EGV. The Direct LDA method also provides a good alternative, while the other tested methods do not show a stable behaviour. The results in absence of the SSS problem confirm that the standard PCA is not adapted to SCA, even when provided with more profiling traces. As expected, it also confirms that among class-oriented PCA and LDA, LDA converges faster.
 
 
-
-\subsubsection{Scenario 3.}
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth]{figures/Criterion3.pdf}
 \caption{Guessing Entropy as function of the number of the traces size after reduction. Figure on the right is a zoom of the one on the left.}\label{fig:3}
 \end{figure}
+
+\subsubsection{Scenario 3.}
 
 
 Let  $\newTraceLength$ be now variable and let the other parameters be fixed as follows: $\numTraces[] = 100, N_p=200, \numPoI = 3996$. Looking at Fig.~\ref{fig:3}, we might observe that the standard PCA might actually well perform in SCA context if provided with a larger number of kept components; on the contrary, a little number of components suffices to the LDA. Finally, keeping more of the necessary do not worsen the efficiency of the attack, which allows adversary to choose $\newTraceLength$ as the maximum value supported by their computational means.
@@ -48,6 +48,9 @@ Let  $\newTraceLength$ be now variable and let the other parameters be fixed as 
 This is the only scenario in which we allow the ELV selection method to not only select the components to keep but also to modify them, keeping only some coefficients within each component, setting the other to zero. Thus, we select couples \textit{(component, time sample)} in order of decreasing ELV, allowing the presence of only $\newTraceLength = 3$ components and $\numPoI$ globally considered, {i.e.} we impose that the matrix containing the 3 selected components as columns has exactly $\numPoI$ rows different from the zero vector. 
 Looking at Fig.~\ref{fig:4} we might observe that the LDA allows to achieve the maximal guessing entropy with only 1 PoI in each of the 3 selected components. 
 Actually, adding PoIs worsen its performances, which is coherent with the assumption that the vulnerable information leaks in only a few points, that are excellently detected by the LDA, and that adding contribution from other points raises the noise which is then compensated by the contributions of other noisy points, in a very delicate balance. Such a behaviour is clearly visible in standard PCA case: the first 10 points considered raise the level of noise, that is then balanced by the last 1000 points.
+
+
+
 
 \begin{table}
 \begin{tiny}
@@ -90,5 +93,5 @@ LDA & IPR & {\bf +} & &{\bf +} & $\bigstar$ \\
 \hline
 \end{tabular}\end{center}
 \end{tiny}
-\caption{Overview of extractors performances in tested situations. A $\bigstar$ denotes the best method, a ${\bf +}$ a method comparable to the best, a ${\bf -}$ a method showing lower performances. Methods introduced in this paper are highlighted.}
+\caption{Overview of extractors performances in tested situations. $\bigstar = $ best method. ${\bf +} = $ performance comparable to the best method. ${\bf -} = $ lower performances.}
 \end{table}
