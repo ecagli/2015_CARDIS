@@ -4,7 +4,7 @@
 \subsection{Principal Component Analysis, the classical statistical tool}
 The Principal Component Analysis (PCA) \cite{fisher1938statistical} is a statistical technique for data dimensionality reduction. It looks for the so-called {\em Principal Components} (PCs for short), which are vectors that form an orthonormal basis for $\mathbb{R}^\traceLength$ (\textit{i.e.} these vectors have norm equal to 1 and are orthogonal to each other). Such PCs are computed, via singular value decomposition, as the eigenvectors of the empirical covariance matrix of data: given a set of data $(\sss[]{i})_{i=1,\dots,\numTraces[]}$ the empirical covariance matrix is given by
 \begin{equation}\label{eq:covmat}
-\covmat = \frac{1}{\numTraces[]} \sum_{i=1}^{\numTraces[]}(\sss[]{i} - \mmmX)(\sss[]{i} - \mmmX)^T \mbox{ ,}
+\covmat = \frac{1}{\numTraces[]} \sum_{i=1}^{\numTraces[]}(\sss[]{i} - \mmmX)(\sss[]{i} - \mmmX)^\intercal \mbox{ ,}
 \end{equation}
  where $\mmmX$ is the empirical mean of data. Let us denote by $r$ the rank of $S$ and by $\AAlpha_1, \dots, \AAlpha_r$ and $\lambda_1, \dots, \lambda_r$ its eigenvectors and the corresponding eigenvalues, respectively. We assume that the $\AAlpha_i$ are listed in the decreasing order of the values $\lambda_i$. It can be shown that $\lambda_i$, for each $i$, equals the empirical variance of the data projected onto the corresponding PC $\AAlpha_i$. Since the data variability is associated to the amount of information, transforming data over the basis provided by the PCs allows a dimensionality reduction that reinforces such information: that is projecting the data onto the  $\newTraceLength$-dimensional subspace of $\mathbb{R}^\traceLength$ spanned by the $\newTraceLength$ leading PCs.\\
 
@@ -13,22 +13,22 @@ In SCA context, the useful information part contained in data is the one that al
 
 During the profiling phase the attacker is assumed to know the value $\sensVar$ of the sensitive variable handled during each acquisition. She can therefore assign the {\em class} $\sensVar$ to each profiling trace  (in analogy with the pattern recognition terminology), obtaining the labelled profiling set $(\sss{i})_{i=1,\dots,\numTraces}$, where $\numTraces$ is the number of traces belonging to the class $\sensVar$. This knowledge is very useful to construct a good class-distinguishing extractor, but the classical PCA does not exploit it. For this reason in SCA literature \cite{TAprincipal,choudaryefficient,choudary2014efficient,disassembler,Standaert2008}  a {\em class-oriented} version of PCA is often used instead of the classical one. Let $\mmmXclass$ be the empirical mean of traces belonging to the same class $\sensVar$. The class-oriented version of the PCA  consists in applying the PCA dimension reduction to the set $(\mmmXclass)_{\sensVar \in \sensVarSet}$, instead of applying it directly to the traces $\sss{i}$. This implies that the empirical covariance matrix will be computed using only the $\lvert \sensVarSet \rvert$ average traces. Equivalently, in case of \textit{balanced} acquisitions ($\numTraces$ constant for each class $\sensVar$), it amounts to replace the covariance matrix $\covmat$ of data in \eqref{eq:covmat}  by the so-called {\em between-class} or inter-class {\em scatter matrix}, given by:
 \begin{equation}\label{eq:SB}
-\SB = \sum_{\sensVar\in\sensVarSet}\numTraces(\mmmXclass-\mmmX)(\mmmXclass-\mmmX)^T \mbox{ .}
+\SB = \sum_{\sensVar\in\sensVarSet}\numTraces(\mmmXclass-\mmmX)(\mmmXclass-\mmmX)^\intercal \mbox{ .}
 \end{equation}
 Remark that $\SB$ coincides, up to a multiplicative factor, to the covariance matrix obtained using the class-averaged traces.\\
 
-Performing PCA (or LDA as we will see in next section) always requires to compute the eigenvectors of some symmetric matrix $\covmat$, essentially obtained by multiplying a matrix $\measuresMatrix$ with its transposed (e.g. for class-oriented PCA we have $\measuresMatrix = [\sqrt{\numTraces[\sensVar_1]}(\mmmXclass[\sensVar_1]-\mmmX),\sqrt{\numTraces[\sensVar_2]}(\mmmXclass[\sensVar_2]-\mmmX), \dots ]$). Let $\measuresMatrix$ have dimension $\traceLength\times\numTraces[]$, and suppose $\numTraces[]\ll \traceLength$ (which occurs for example in class-oriented PCA , since $\numTraces[]=\lvert \sensRandVar \rvert$). Then, the matrix $\covmat=\measuresMatrix\measuresMatrix^T$ has rank at most $\numTraces[]$. Moreover, rows of $\measuresMatrix$ are often linearly dependent (as in our example since they are forced to have zero mean), so the rank of $\covmat$ is actually strictly less than $\numTraces[]$, giving us at most $\numTraces[]-1$ eigenvectors.\\
+Performing PCA (or LDA as we will see in next section) always requires to compute the eigenvectors of some symmetric matrix $\covmat$, essentially obtained by multiplying a matrix $\measuresMatrix$ with its transposed (e.g. for class-oriented PCA we have $\measuresMatrix = [\sqrt{\numTraces[\sensVar_1]}(\mmmXclass[\sensVar_1]-\mmmX),\sqrt{\numTraces[\sensVar_2]}(\mmmXclass[\sensVar_2]-\mmmX), \dots ]$). Let $\measuresMatrix$ have dimension $\traceLength\times\numTraces[]$, and suppose $\numTraces[]\ll \traceLength$ (which occurs for example in class-oriented PCA , since $\numTraces[]=\lvert \sensRandVar \rvert$). Then, the matrix $\covmat=\measuresMatrix\measuresMatrix^\intercal$ has rank at most $\numTraces[]$. Moreover, rows of $\measuresMatrix$ are often linearly dependent (as in our example since they are forced to have zero mean), so the rank of $\covmat$ is actually strictly less than $\numTraces[]$, giving us at most $\numTraces[]-1$ eigenvectors.\\
 
 A practical problem when $\traceLength$ is large, which happens e.g. when attacking RSA, is represented by the computation and the storage of the $\traceLength\times\traceLength$ matrix $\covmat$. Archambeau et al. \cite{TAprincipal} proposed a method that circumvents this issue, allowing computing the eigenvectors of low-rank big-dimensional symmetric matrices without computing and storing such matrices. In next section we will observe in which cases such a method can be applied to LDA and for which LDA variants.
 
 %\subsection{Computational Trick to Avoid the Computation of Big Covariance Matrices}
-%Performing PCA (or LDA, as we will see in next section), always requires to compute the eigenvectors of some symmetric matrix $\covmat$, essentially obtained by a matrix $\measuresMatrix$ with its transposed(e.g. for class-oriented PCA we have $\measuresMatrix = [\sqrt{\numTraces[\sensVar_1]}(\mmmXclass[\sensVar_1]-\mmmX),\sqrt{\numTraces[\sensVar_2]}(\mmmXclass[\sensVar_2]-\mmmX), \dots ]$). Let $\measuresMatrix$ have dimension $\traceLength\times\numTraces[]$, and suppose $\numTraces[]\ll \traceLength$ (which occurs for example in class-oriented PCA , since $\numTraces[]=\lvert \sensRandVar \rvert$). Then, the matrix $\covmat=\measuresMatrix\measuresMatrix^T$ is far from being a full-rank matrix and we can obtain at most $\numTraces[]$ eigenvectors. Moreover, rows of $\measuresMatrix$ are often linearly dependent (as in our example since they are forced to have zero mean), so the rank of $\covmat$ is actually strictly less than $\numTraces[]$, giving us at most $\numTraces[]-1$ eigenvectors.\\
+%Performing PCA (or LDA, as we will see in next section), always requires to compute the eigenvectors of some symmetric matrix $\covmat$, essentially obtained by a matrix $\measuresMatrix$ with its transposed(e.g. for class-oriented PCA we have $\measuresMatrix = [\sqrt{\numTraces[\sensVar_1]}(\mmmXclass[\sensVar_1]-\mmmX),\sqrt{\numTraces[\sensVar_2]}(\mmmXclass[\sensVar_2]-\mmmX), \dots ]$). Let $\measuresMatrix$ have dimension $\traceLength\times\numTraces[]$, and suppose $\numTraces[]\ll \traceLength$ (which occurs for example in class-oriented PCA , since $\numTraces[]=\lvert \sensRandVar \rvert$). Then, the matrix $\covmat=\measuresMatrix\measuresMatrix^\intercal$ is far from being a full-rank matrix and we can obtain at most $\numTraces[]$ eigenvectors. Moreover, rows of $\measuresMatrix$ are often linearly dependent (as in our example since they are forced to have zero mean), so the rank of $\covmat$ is actually strictly less than $\numTraces[]$, giving us at most $\numTraces[]-1$ eigenvectors.\\
 %A practical problem in case of high-dimensional data, i.e. when $\traceLength$ is big, which happens e.g. when attacking RSA, is represented by the computation and the storage of the $\traceLength\times\traceLength$ matrix $\covmat$. This problem can be circumvented by exploiting the following lemma coming from linear algebra:
 %\begin{lemma}
-%For any $\traceLength\times\numTraces[]$ matrix $\measuresMatrix$, mapping $\xxx\mapsto \measuresMatrix \xxx$ is a one-to-one mapping that maps eigenvectors of  $\measuresMatrix^T\measuresMatrix$ ($\numTraces[]\times\numTraces[]$)    onto those of   $\measuresMatrix\measuresMatrix^T$ ($\traceLength\times\traceLength$).
+%For any $\traceLength\times\numTraces[]$ matrix $\measuresMatrix$, mapping $\xxx\mapsto \measuresMatrix \xxx$ is a one-to-one mapping that maps eigenvectors of  $\measuresMatrix^\intercal\measuresMatrix$ ($\numTraces[]\times\numTraces[]$)    onto those of   $\measuresMatrix\measuresMatrix^\intercal$ ($\traceLength\times\traceLength$).
 %\end{lemma}
 %%
-%This lemma allows to compute and store the $\numTraces[]\times\numTraces[]$ matrix $\tilde{\covmat} = \frac{1}{\numTraces[]}\measuresMatrix^T\measuresMatrix$, compute its $\numTraces[]\times 1$ eigenvectors $\BBeta_i$ and eigenvalues $\lambda_i$, convert them into eigenvectors of $\covmat$: $\AAlpha_i = \measuresMatrix\BBeta_i$. It is not guaranteed that eigenvectors $\AAlpha$ obtained in this way have norm equal to 1. This is why a normalization step should follow if we aim to obtain an orthonormal set of eigenvectors.
+%This lemma allows to compute and store the $\numTraces[]\times\numTraces[]$ matrix $\tilde{\covmat} = \frac{1}{\numTraces[]}\measuresMatrix^\intercal\measuresMatrix$, compute its $\numTraces[]\times 1$ eigenvectors $\BBeta_i$ and eigenvalues $\lambda_i$, convert them into eigenvectors of $\covmat$: $\AAlpha_i = \measuresMatrix\BBeta_i$. It is not guaranteed that eigenvectors $\AAlpha$ obtained in this way have norm equal to 1. This is why a normalization step should follow if we aim to obtain an orthonormal set of eigenvectors.
 
 
 \subsection{The Open Question: Choosing the Components to Keep?}\label{sec:ELV}
@@ -63,29 +63,27 @@ The authors of \cite{SCAclassProbl} suggest to collect the PCs in decreasing ord
 
 The selection methods provided by the evaluation of the EGV and of the IPR are somehow complementary: the former is based only on the eigenvalues associated to the PCs and does not consider the form of the PCs themselves; the latter completely discards the information given by the eigenvalues of the PCs, considering only the distribution of their coefficients. One of the contributions of the present paper is to propose a new selection method, that builds a bridge between the EGV and the IPR approaches. As we will argue, our method, based on the so-called {\em Explained Local Variance} does not only lead to the construction of a new selection criterion, but also permits  to modify the PCs, choosing individually the coefficients to keep and those to discard. 
 
-%
 \subsection{The Explained Local Variance Selection Method} 
-
+The method we develop in this section is based on a compromise between the variance provided by each PC (more precisely its EGV) and the number of time samples necessary to achieve a consistent part of such a variance. To this purpose we  introduce the concept of {\em Explained Local Variance} (ELV).
 \begin{figure}
 \includegraphics[width=0.5\textwidth]{figures/cumulativeELVallRectangle.pdf} 
 \includegraphics[width=0.5\textwidth]{figures/cumulativeELVzoomedRectangle.pdf} 
 \caption{Cumulative ELV trend of principal components. On the right a zoom of the plot on the left. Data acquisition described in Sec.~(\ref{sec:fourCriteria}).}\label{fig:ELVcumulative}
 \end{figure}
 
-
-The method we develop in this section is based on a compromise between the variance provided by each PC (more precisely its EGV) and the number of time samples necessary to achieve a consistent part of such a variance. To this purpose we  introduce the concept of {\em Explained Local Variance} (ELV).\\
-
-Let us start by giving some intuition behind our new concept. Thinking to the observations ${\sss[]{}}^\mathrm{T}$, or to the class-averages ${\mmmX}^\mathrm{T}$ in class-oriented PCA case, as realizations of a random variable $\XXX$, we have that $\lambda_i$ is an estimator for the variance of the random variable $\XXX\cdot\AAlpha_i$. Developing, we obtain
+Let us start by giving some intuition behind our new concept. Thinking to the observations ${\sss[]{}}^\intercal$, or to the class-averages ${\mmmX}^\intercal$ in class-oriented PCA case, as realizations of a random variable $\XXX^\intercal$, we have that $\lambda_i$ is an estimator for the variance of the random variable $\XXX^\intercal\cdot\AAlpha_i$. Developing, we obtain
 \begin{align}\label{eq:ELV}
-\lambda_i =& \hat{\mathrm{var}}(\sum_{j=1}^D \XXX[j]\AAlpha_i[j]) = \sum_{j=1}^D\sum_{k=1}^D \hat{\mathrm{cov}}(\XXX[j]\AAlpha_i[j], \XXX[k]\AAlpha_i[k])=\\
-=& \sum_{j=1}^D \AAlpha_i[j]\sum_{k=1}^D\AAlpha_i[k]\hat{\mathrm{cov}}(\XXX[j], \XXX[k])= \sum_{j=1}^D \AAlpha_i[j]\cdot \covmat_{j} \AAlpha_i=  \\
-=& \sum_{j=1}^D \AAlpha_i[j]\cdot \lambda_i\AAlpha_i[j]= \sum_{j=1}^D  \lambda_i \AAlpha_i[j]^2 \label{eq:toJustify}
+\lambda_i =& \hat{\mathrm{var}}(\sum_{j=1}^D \XXX^\intercal[j]\AAlpha_i[j]) = \sum_{j=1}^D\sum_{k=1}^D \hat{\mathrm{cov}}(\XXX^\intercal[j]\AAlpha_i[j], \XXX^\intercal[k]\AAlpha_i[k])=\\
+=& \sum_{j=1}^D \AAlpha_i[j]\sum_{k=1}^D\AAlpha_i[k]\hat{\mathrm{cov}}(\XXX^\intercal[j], \XXX^\intercal[k])= \sum_{j=1}^D \AAlpha_i[j] (\covmat_{j}^\intercal \cdot \AAlpha_i)=  \\
+=& \sum_{j=1}^D \AAlpha_i[j] \lambda_i\AAlpha_i[j]= \sum_{j=1}^D  \lambda_i \AAlpha_i[j]^2 \label{eq:toJustify}
 \end{align}
-where $\covmat_{j}$ denotes the $j$-th row of $\covmat$ and \eqref{eq:toJustify} is justified by the fact that $\AAlpha_i$ is an eigenvector of $\covmat$, with $\lambda_i$ its corresponding eigenvalue. The result of this computation is quite obvious, since $\parallel \AAlpha_i\parallel=1$, but it evidences the contribution of each time sample in the information held by the PC. This makes us introduce the following definition:
+where $\covmat_{j}^\intercal$ denotes the $j$-th row of $\covmat$ and \eqref{eq:toJustify} is justified by the fact that $\AAlpha_i$ is an eigenvector of $\covmat$, with $\lambda_i$ its corresponding eigenvalue. The result of this computation is quite obvious, since $\parallel \AAlpha_i\parallel=1$, but it evidences the contribution of each time sample in the information held by the PC. This makes us introduce the following definition:
 \begin{definition}
+
+
 The {\em Explained Local Variance} of a PC $\AAlpha_i$ in a sample $j$, is defined by
 \begin{equation}
-\mathrm{ELV}(i,j) = \frac{\lambda_i \AAlpha_i[j]^2}{\sum_{k=1}^r\lambda_k} = \mathrm{EGV}(\AAlpha_i) \AAlpha_i[j]^2  \mbox{ .}
+\mathrm{ELV}(\AAlpha_i,j) = \frac{\lambda_i \AAlpha_i[j]^2}{\sum_{k=1}^r\lambda_k} = \mathrm{EGV}(\AAlpha_i) \AAlpha_i[j]^2  \mbox{ .}
 \end{equation}
 \end{definition}
 \begin{figure}
@@ -101,7 +99,7 @@ It may be observed that the sum over all the trace samples ELVs of a PC equals t
 
 Operating a selection of components {\em via} ELV, in analogy with the EGV, requires to fix the reduced space dimension $\newTraceLength$, or a threshold $\beta$ for the cumulative ELV. In the first case, the maximal ELVs of each PC are compared, and the $\newTraceLength$ components achieving the highest values of such ELVs are chosen. In the second case, all couples (PC, time sample) are sorted in decreasing order with respect to their ELV, and summed until the threshold $\beta$ is achieved. Then only PCs contributing in this sum are selected. \\
 
-We remark that the ELV is a score associated not only to the whole components, but to each of their coefficients. This interesting property can be exploited to further select, within a selected PC, the non-significant points, {\em i.e.} those with a low ELV, to be setted to zero. That is a natural way to exploit the ELV score in order to operate a kind of {\em denoising} for the reduced data, making them only depend  on the significant time samples. In Sec.~\ref{sec:experiments} we test the performances of an attack varying the number of time samples involved in the computation of the reduced data, and showing that such a denoising processing might impact significantly. 
+We remark that the ELV is a score associated not only to the whole components, but to each of their coefficients. This interesting property can be exploited to further remove, within a selected PC, the non-significant points, {\em i.e.} those with a low ELV. In practice this is done by setting these points to zero. That is a natural way to exploit the ELV score in order to operate a kind of {\em denoising} for the reduced data, making them only depend  on the significant time samples. In Sec.~\ref{sec:experiments} (scenario 4) we test the performances of an attack varying the number of time samples involved in the computation of the reduced data, and showing that such a denoising processing might impact significantly. 
  
 
 
@@ -148,7 +146,7 @@ We remark that the ELV is a score associated not only to the whole components, b
 %Now fix 
 %
 %\begin{remark}
-%Let $A$ be the matrix that contains the chosen $\tilde{\AAlpha}_k$ vectors as columns. The total variance $\sum diag(A^T\covmat A)$ will not attend the  $\beta$-th part of the initial variables variance, as it would be if eigenvectors $\AAlpha_k$ would have been kept unchanged, but will be lower than it. This is exactly because  vectors $\tilde{\AAlpha}_k$ are no more eigenvectors of $\covmat$. 
+%Let $A$ be the matrix that contains the chosen $\tilde{\AAlpha}_k$ vectors as columns. The total variance $\sum diag(A^\intercal\covmat A)$ will not attend the  $\beta$-th part of the initial variables variance, as it would be if eigenvectors $\AAlpha_k$ would have been kept unchanged, but will be lower than it. This is exactly because  vectors $\tilde{\AAlpha}_k$ are no more eigenvectors of $\covmat$. 
 %\end{remark}
 %
 %
