@@ -36,7 +36,7 @@ The introduction of the PCA method in SCA context (either in its classical or cl
 
 Until now, an answer to the such questions has been given \cite{choudary2014efficient}, linked to the concept of {\em explained variance} (or {\em explained global variance}, EGV for short) of a PC $\AAlpha_i$:
 \begin{equation}\label{eq:EGV}
-\mathrm{EGV}(\AAlpha_i) =  \frac{\lambda_i}{\sum_{j=1}^r\lambda_j} \mbox{ ,}
+\mathrm{EGV}(\AAlpha_i) =  \frac{\lambda_i}{\sum_{k=1}^r\lambda_k} \mbox{ ,}
 \end{equation}
 where $r$ is the rank of the covariance matrix $\covmat$, and $\lambda_j$ is the eigenvalue associated to the $j$-th PC $\AAlpha_j$. The EGV is the variance of the data projected over the $i$-th PC (which equals $\lambda_i$) divided by the total variance of the original data (given by the trace of the covariance matrix $\covmat$). By definition of EGV, the sum of all the PCs EGV is equal to $1$; that is why this quantity is often multiplied by $100$ and expressed as percentage.
 Choosing the PCs exploiting the EGV consists in fixing a wished {\em Cumulative Explained Variance} $\beta$ and in keeping $\newTraceLength$ different PCs, where $\newTraceLength$ is the minimum integer such that
@@ -57,7 +57,7 @@ The leaking side-channel information is localised in few points of the acquired 
 In the rest of the paper, we conduct our own analyses under Assumption \ref{assum:local} that we think to be reasonable in SCA contexts where the goal of the security developers is to minimize the number of leaking points.
 Under this assumption, the authors of \cite{SCAclassProbl} propose a measure to evaluate the eigenvectors {\em localization}. It is called {\em Inverse Participation Ratio} (IPR) and is defined as follows:
 \begin{equation}
-\mathrm{IPR}(\AAlpha_i) = \sum_{t=1}^\traceLength \AAlpha_i[t]^4 \mbox{ .}
+\mathrm{IPR}(\AAlpha_i) = \sum_{j=1}^\traceLength \AAlpha_i[j]^4 \mbox{ .}
 \end{equation}
 The authors of \cite{SCAclassProbl} suggest to collect the PCs in decreasing order with respect to the IPR score.\\
 
@@ -85,7 +85,7 @@ where $\covmat_{j}$ denotes the $j$-th row of $\covmat$ and \eqref{eq:toJustify}
 \begin{definition}
 The {\em Explained Local Variance} of a PC $\AAlpha_i$ in a sample $j$, is defined by
 \begin{equation}
-\mathrm{ELV}(i,t) = \frac{\lambda_i \AAlpha_i[t]^2}{\sum_{j=1}^r\lambda_j} = \mathrm{EGV}(i) \AAlpha_i[t]^2  \mbox{ .}
+\mathrm{ELV}(i,j) = \frac{\lambda_i \AAlpha_i[j]^2}{\sum_{k=1}^r\lambda_k} = \mathrm{EGV}(\AAlpha_i) \AAlpha_i[j]^2  \mbox{ .}
 \end{equation}
 \end{definition}
 \begin{figure}
