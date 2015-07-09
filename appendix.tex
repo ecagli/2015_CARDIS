@@ -1,0 +1,24 @@
+\appendix
+\section{Compare Effective Extractors}\label{sec:fourCriteria}
+
+
+As we have seen in the introduction, the state of the art proposes different techniques to create extractors:  a $T$-test followed by a thresholding, PCA, LDA, etc.\\
+A lot of these tools make use of the profiling traces to provide an extractor; thus, for such techniques the profiling traces are mandatory and cover the double role of feeding the method that generates the extractor, and of modelling the leakage function if the adversary makes use of a profiling stage. It might be interesting, but it is out of the scope of this paper, to study whether all these methods, eventually provided with enough profiling observations, construct effective extractors (meaning that there exists a threshold $N$, possible high, for which (\ref{eq:effective}) is satisfied).\\
+
+A much less theoretical issue, but very important from a practical point of view, is the comparison between the proposed methods. Seldom the extractors provided by different methods are equal or similar, and choosing which one is the best one according to the context (amount of noise, specificity of the information leakage, nature of the side channel, etc.) is not a trivial task, especially because a universal criterion to compare different extractors must encompass a lot of parameters. 
+%Indeed, an extractor that might be optimal for an adversary, could be largely sub-optimal for another adversary that, for example, uses a different attack algorithm, or have some upper bounds for the number of profiling traces or attack traces acquirable, or have some memory constraints that makes preferable an extractor $\extract_\newTraceLength$ with small image size $\newTraceLength$, or simply works with measurements that has a different behaviour. \\
+Since the aim of this paper is to effectuate a comparison between different extractors, and some new propositions, to construct extractors of PoI, we are obliged to focus on a given adversary, and to specify the different goals that may be pursued by our attackers.
+
+
+
+
+
+\subsection{The Four Criteria.}
+The comparison of the tested methods is based on four criteria, that exploit the guessing entropy as an efficiency measure for an attack whose preprocessing coincides with the extractors to compare. For each criterion let us fix a common threshold $\threshold$ for such a guessing entropy, and all the adversary parameters but the one targeted by the specific criterion. We consider four criteria: 
+\begin{enumerate}
+\item {\em Minimize $\numTraces[]$}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ with the minimal number of attack traces
+\item {\em Minimize $\numTraces[]'$}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ with the minimal number of profiling traces
+\item {\em Minimize $\newTraceLength$}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ reducing as much as possible the size of the extracted traces
+\item {\em Minimize the number of PoI}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ exploiting the minimal number of original trace points.
+\end{enumerate}
+The last criterion can be expressed, for the projecting methods, as the search for a projecting matrix $A$ (see \eqref{eq:linearExtractor}) with as much null columns as possible. In this way, the many time samples corresponding to these zero rows never contribute to the computation of the projected samples. The meaning of this criterion comes from the assumption that only a few time samples leak vulnerable information, and someone (e.g. a security designer) can be interested in precisely detect only those points.
