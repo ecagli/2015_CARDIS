@@ -52,7 +52,7 @@ To formalize the problem of the research of PoIs, we remark that in general an a
 In this scheme the research of PoI is part of the traces pre-processing. We will formalize it as the application of a function, called {\em extractor} (by analogy to the notion of randomness extractor \cite{DBLP:journals/jcss/NisanZ96}):
 
 \begin{definition}
-Let $\sss[]{}\in \mathbb{R}^\traceLength$ represents an observation. An {\em Extractor of Feature}, or an {\em Extractor} for short, is any function of the form:
+Let $\sss[]{}\in \mathbb{R}^\traceLength$ represents an observation. An  {\em Extractor}  is any function of the form:
 \begin{align*}
 \mathbb{R}^\traceLength & \rightarrow \mathbb{R}^\newTraceLength \quad \mbox{ with } \traceLength \leq \newTraceLength \\
 \sss[]{} & \mapsto \extractor[\newTraceLength]{\sss[]{}} \mbox{ .}
@@ -63,13 +63,13 @@ The dimension $C$ of an extractor will be omitted if there is no ambiguity or if
 \end{notation}
 
 \begin{example}
-A special family of extractors that is widely studied in last years, is the one constituted by the {\em linear} or {\em projecting} extractors, \textit{i.e.} those for which each sample in the reduced space $\mathbb{\newTraceLength}$ is a linear combination of samples of the original space. Such extractors can be defined by a $\traceLength \times \newTraceLength$ matrix containing as columns the coefficients to use for the $\newTraceLength$ linear combinations. 
+A special family of extractors that is widely studied in last years, is the one constituted by the {\em linear} or {\em projecting} extractors, \textit{i.e.} those for which each sample in the reduced space $\mathbb{\newTraceLength}$ is a linear combination of samples of the original space. Such extractors can be defined by a $\newTraceLength \times \traceLength$ matrix, as in \eqref{eq:linearExtractor}, containing as rows the coefficients to use for the $\newTraceLength$ linear combinations. 
 \end{example}
 
 Obviously, not any extractor $\extract$ is suitable to soundly realise the traces pre-processing of an attack; for example the restriction over a random coordinate, i.e. $\extractor{\sss[]{}} = x[r]$, $r$ being random, is hardly a good candidate for an extractor. For this reason an adversary might aim to only consider extractors that satisfy the following fundamental property:
 
 \begin{property}[Effective Extractors]
-Let $\adversary$ be an adversary and $\guessingEntropy_{\adversary(\numTraces[])}$ be its guessing entropy, when no trace processing phase is effectuated. Let $\extract$ be an extractor, and $\adversary'$ be an adversary that coincides with $\adversary$ but whose algorithm $\attackAlgorithm$ is fed with the sets $ \left( \left(\extract(\sss[]{n'})\right)_{n'=1,\dots \numTraces[]'}, \left(\extract((\sssTest[]{n}))\right)_{n=1,\dots \numTraces[]} \right)$, i.e. an adversary that applies $\extract$ as traces pre-processing phase. The extractor $\extract$ is an {\em effective  extractor of PoIs with respect to $\numTraces[]$} only if, for any $T \geq\numTraces[] $, we have:
+Let $\adversary$ be an adversary and $\guessingEntropy_{\adversary(\numTraces[])}$ be its guessing entropy, when no trace processing phase is effectuated. Let $\extract$ be an extractor, and $\adversary'$ be an adversary that coincides with $\adversary$ but whose algorithm $\attackAlgorithm$ is fed with the sets $ \left( \left(\extract(\sss[]{n'})\right)_{n'=1,\dots \numTraces[]'}, \left(\extract((\sssTest[]{n}))\right)_{n=1,\dots \numTraces[]} \right)$, i.e. an adversary that applies $\extract$ as traces pre-processing phase. The extractor $\extract$ is an {\em effective  extractor with respect to $\numTraces[]$} only if, for any $T \geq\numTraces[] $, we have:
 
 \begin{equation}\label{eq:effective}
 \guessingEntropy_{\adversary'(T)} \leq \guessingEntropy_{\adversary(T)}\mbox{ .}
