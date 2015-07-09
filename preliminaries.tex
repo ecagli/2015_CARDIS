@@ -18,7 +18,7 @@
 %\item In general side-channel measurements are multidimensional real data, $\SSS[]{} \in \mathbb{R}^D$ and are supposed to be zero-mean vectors: $E[\SSS[]] = \textbf{0}$
 
 \subsection{Preliminaries}
-In the following bold block capitals $\measuresMatrix$ denote matrices and Greek or Latin bold lower cases, $\AAlpha$ or   $\xxx$, denote real column vectors. The $i$-th entry of a vector $\xxx$ is indicated by $\xxx[i]$.\\
+In the following, bold block capitals $\measuresMatrix$ denote matrices and Greek or Latin bold lower cases, $\AAlpha$ or   $\xxx$, denote real column vectors. The $i$-th entry of a vector $\xxx$ is indicated by $\xxx[i]$.\\
 
 A side-channel key recovery adversary, being inspired by the model proposed by Standaert et al. \cite{unifiedFramework}, corresponds to a 5-tuple  $\adversary = (\attackAlgorithm, \tau, \memComplexity , \numTraces[]', \numTraces[])$, where $\attackAlgorithm$ is an algorithm or a procedure with time complexity $\tau$ and memory complexity $\memComplexity$, that takes as input two sets of measurements of respective sizes $N'$ and $N$. The algorithm $A$ returns a vector of key candidates. Since the goal of the attack is to distinguish the right key in a set  $\keySet$  of candidates, the output vector, called {\em guessing vector} $\guessingVector$, sorts such candidates in decreasing order with respect to their likelihood:
 
@@ -27,7 +27,7 @@ A side-channel key recovery adversary, being inspired by the model proposed by S
 \end{equation}
 
 
-The first set of traces, here called {\em profiling set}, is optional, and corresponds to measurements obtained from a profiling device, identical to the device under attack but with full access to the public and secret parameters. The second set of traces,  called {\em attack set}, corresponds to measurements acquired from the device under attack, parametrized by a key which will be the target of the attack.
+The first set of traces, here called {\em profiling set}, is optional, and corresponds to measurements obtained from a profiling device, identical to the device under attack but with full access to the public and secret parameters. The second set of traces,  called {\em attack set}, corresponds to measurements acquired from the device under attack, parametrized by a key which will be the target of the attack.\\
 
 An interesting tool to assess the soundness of an adversary is given by the {\em guessing entropy} \cite{massey1994guessing} and by the {asymptotic guessing entropy}, respectively defined as
 
@@ -36,7 +36,7 @@ An interesting tool to assess the soundness of an adversary is given by the {\em
 \end{equation}
 where $\adversary(\numTraces[])$ denotes the adversary $\adversary$ with its fifth parameter fixed to $\numTraces[]$.\\
 
-A trace $\sss[]{}$ can be seen as an element in $\mathbb{R}^\traceLength$, and its size or dimension $D$, that depends on a lot of factors (e.g. the instruments setup or the cryptographic algorithm under attack) usually ranges between some thousands and some hundreds of thousands. Nevertheless, only few points of the trace depend on the secret target key. A preliminary step of an attack therefore generally consists in the extraction of the so-called {Points of Interest (PoI)} from the  rough traces. By definition, the latter points are those which depend on both the secret target parameter and on some given public data (a necessary condition to perform {\em differential} attacks). This extraction represents a non-trivial concrete obstacle for the practical performances of an attack.
+A trace $\sss[]{}$ can be seen as an element in $\mathbb{R}^\traceLength$, and its size or dimension $D$, that depends on a lot of factors (e.g. the instruments setup or the cryptographic algorithm under attack),  usually ranges between some thousands and some hundreds of thousands. Nevertheless, only few points of the trace depend on the secret target key. A preliminary step of an attack therefore generally consists in the extraction of the so-called {Points of Interest (PoI)} from the  rough traces. By definition, the latter points are those which depend on both the secret target parameter and on some given public data (a necessary condition to perform {\em differential} attacks). This extraction represents a non-trivial concrete obstacle for the practical performances of an attack.
 
 \subsection{PoI Research Formalization: Extractors and Fundamental Property}
 
@@ -100,7 +100,7 @@ The comparison of the tested methods is based on four criteria, that exploit the
 \item {\em Minimize $\newTraceLength$}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ reducing as much as possible the size of the extracted traces
 \item {\em Minimize the number of PoI}: the best method is the one that achieves $\guessingEntropy_{\adversary'}\leq \threshold$ exploiting the minimal number of original trace points.
 \end{enumerate}
-The last criterion can be expressed, for the projecting methods, as the search for a projecting matrix which as much of null rows as possible. In this way the many time samples corresponding to these zero rows, never contribute to the computation of the projected samples. The meaning of this criterion comes from the assumption that only a few time samples leak vulnerable information, and one can be interested in precisely detect only those points, e.g. a security designer.
+The last criterion can be expressed, for the projecting methods, as the search for a projecting matrix $A$ (see \eqref{eq:linearExtractor}) with as much null columns as possible. In this way, the many time samples corresponding to these zero rows never contribute to the computation of the projected samples. The meaning of this criterion comes from the assumption that only a few time samples leak vulnerable information, and someone (e.g. a security designer) can be interested in precisely detect only those points.
 
 
 
