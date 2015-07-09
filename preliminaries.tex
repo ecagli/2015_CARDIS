@@ -1,4 +1,4 @@
-\section{Preliminaries and Comparison Framework}\label{sec:preliminaries}
+\section{Preliminaries and Formalization}\label{sec:preliminaries}
 
 
 
@@ -20,14 +20,14 @@
 \subsection{Preliminaries}
 In the following, bold block capitals $\measuresMatrix$ denote matrices and Greek or Latin bold lower cases, $\AAlpha$ or   $\xxx$, denote real column vectors. The $i$-th entry of a vector $\xxx$ is indicated by $\xxx[i]$.\\
 
-A side-channel key recovery adversary, being inspired by the model proposed by Standaert et al. \cite{unifiedFramework}, corresponds to a 5-tuple  $\adversary = (\attackAlgorithm, \tau, \memComplexity , \numTraces[]', \numTraces[])$, where $\attackAlgorithm$ is an algorithm or a procedure with time complexity $\tau$ and memory complexity $\memComplexity$, that takes as input two sets of measurements of respective sizes $N'$ and $N$. The algorithm $A$ returns a vector of key candidates. Since the goal of the attack is to distinguish the right key in a set  $\keySet$  of candidates, the output vector, called {\em guessing vector} $\guessingVector$, sorts such candidates in decreasing order with respect to their likelihood:
+A side-channel key recovery adversary, being inspired by the model proposed by Standaert et al. \cite{unifiedFramework}, corresponds to a 5-tuple  $\adversary = (\attackAlgorithm, \tau, \memComplexity , \numTraces[]', \numTraces[])$, where $\attackAlgorithm$ is an algorithm or a procedure with time complexity $\tau$ and memory complexity $\memComplexity$, that takes as input two sets of measurements of respective sizes $N'$ and $N$. The algorithm $A$ returns a vector of key candidates. Since the goal of the attack is to distinguish the right key $\keyTest$ in a set  $\keySet$  of candidates, the output vector, called {\em guessing vector} $\guessingVector$, sorts such candidates in decreasing order with respect to their likelihood:
 
 \begin{equation}
 \attackAlgorithm \colon \left( (\sss[]{i})_{i=1,\dots \numTraces[]'}, (\sssTest[]{j})_{j=1,\dots \numTraces[]} \right) \mapsto \guessingVector = \left[\guessingVector[1], \dots, \guessingVector[{\lvert \keySet \rvert}]\right] \mbox{ .}
 \end{equation}
 
 
-The first set of traces, here called {\em profiling set}, is optional, and corresponds to measurements obtained from a profiling device, identical to the device under attack but with full access to the public and secret parameters. The second set of traces,  called {\em attack set}, corresponds to measurements acquired from the device under attack, parametrized by a key which will be the target of the attack.\\
+The first set of input traces $(\sss[]{i})_{i=1,\dots \numTraces[]'}$, here called {\em profiling set}, is optional, and corresponds to measurements obtained from a profiling device, identical to the device under attack but with full access to the public and secret parameters. The second set of traces $(\sssTest[]{j})_{j=1,\dots \numTraces[]}$,  called {\em attack set}, corresponds to measurements acquired from the device under attack, parametrized by a key which will be the target of the attack.\\
 
 An interesting tool to assess the soundness of an adversary is given by the {\em guessing entropy} \cite{massey1994guessing} and by the {asymptotic guessing entropy}, respectively defined as
 
@@ -38,7 +38,7 @@ where $\adversary(\numTraces[])$ denotes the adversary $\adversary$ with its fif
 
 A trace $\sss[]{}$ can be seen as an element in $\mathbb{R}^\traceLength$, and its size or dimension $D$, that depends on a lot of factors (e.g. the instruments setup or the cryptographic algorithm under attack),  usually ranges between some thousands and some hundreds of thousands. Nevertheless, only few points of the trace depend on the secret target key. A preliminary step of an attack therefore generally consists in the extraction of the so-called {Points of Interest (PoI)} from the  rough traces. By definition, the latter points are those which depend on both the secret target parameter and on some given public data (a necessary condition to perform {\em differential} attacks). This extraction represents a non-trivial concrete obstacle for the practical performances of an attack.
 
-\subsection{PoI Research Formalization: Extractors and Fundamental Property}
+\subsection{Formalization: Extractors and Fundamental Property}
 
 
 To formalize the problem of the research of PoIs, we remark that in general an attack is composed of four fundamentally different phases:
@@ -54,8 +54,8 @@ In this scheme the research of PoI is part of the traces pre-processing. We will
 \begin{definition}
 Let $\sss[]{}\in \mathbb{R}^\traceLength$ represents an observation. An  {\em Extractor}  is any function of the form:
 \begin{align*}
-\mathbb{R}^\traceLength & \rightarrow \mathbb{R}^\newTraceLength \quad \mbox{ with } \traceLength \leq \newTraceLength \\
-\sss[]{} & \mapsto \extractor[\newTraceLength]{\sss[]{}} \mbox{ .}
+\extract_{\newTraceLength}\colon & \mathbb{R}^\traceLength  \rightarrow \mathbb{R}^\newTraceLength \quad \mbox{ with } \traceLength \leq \newTraceLength \\
+&\sss[]{}  \mapsto \extractor[\newTraceLength]{\sss[]{}} \mbox{ .}
 \end{align*}
 \end{definition}
 \begin{notation}
