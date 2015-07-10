@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.10.23)  10 JUL 2015 09:29
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.10.23)  10 JUL 2015 14:02
 entering extended mode
 **main.tex
 (C:\Users\ec243758\2015_CARDIS\main.tex
@@ -934,7 +934,17 @@ File: figures/PC6.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/PC6.pdf used on input line 95.
 (pdftex.def)             Requested size: 139.2724pt x 92.93715pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Overfull \hbox (1.79437pt too wide) in paragraph at lines 98--100
+\OT1/cmr/m/n/10 Let $\OMS/cmsy/m/n/10 J \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OM
+L/cmm/m/it/10 j[]; j[]; [] ; j[]\OMS/cmsy/m/n/10 g  f\OT1/cmr/m/n/10 1\OML/cmm
+/m/it/10 ; \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; [] ; D\OMS/cmsy/m/n/10 g$ \OT1/c
+mr/m/n/10 be a sorted set of in-dexes such that $[]([][]\OML/cmm/m/it/10 ; j[]\
+OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10  []\OT1/cmr/m/n/10 ([][]\OML/cmm/m/it/10 ; j
+[]\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 $
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
 
  []
 
@@ -944,7 +954,7 @@ ers/ec243758/2015_CARDIS/figures/cumulativeELVzoomedRectangle.pdf> <C:/Users/ec
 pdf> <C:/Users/ec243758/2015_CARDIS/figures/PC3.pdf> <C:/Users/ec243758/2015_CA
 RDIS/figures/PC4.pdf> <C:/Users/ec243758/2015_CARDIS/figures/PC5.pdf> <C:/Users
 /ec243758/2015_CARDIS/figures/PC6.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 100--101
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
@@ -958,12 +968,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--29
 
  []
 
-
+[8]
 Underfull \hbox (badness 10000) in paragraph at lines 30--31
 
  []
 
-[8]
+
 Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
@@ -1011,10 +1021,14 @@ Overfull \hbox (8.22215pt too wide) in paragraph at lines 10--17
 [] [] 
  []
 
-[10] [11 <C:/Users/ec243758/2015_CARDIS/figures/Criterion1.pdf> <C:/Users/ec243
-758/2015_CARDIS/figures/Criterion1Good.pdf> <C:/Users/ec243758/2015_CARDIS/figu
-res/Criterion2SSS.pdf> <C:/Users/ec243758/2015_CARDIS/figures/Criterion2notSSS.
-pdf>] <figures/Criterion3.pdf, id=159, 521.95pt x 348.30125pt>
+[10]
+Underfull \vbox (badness 3291) has occurred while \output is active []
+
+ [11 <C:/Users/ec243758/2015_CARDIS/figures/Criterion1.pdf> <C:/Users/ec243758/
+2015_CARDIS/figures/Criterion1Good.pdf> <C:/Users/ec243758/2015_CARDIS/figures/
+Criterion2SSS.pdf> <C:/Users/ec243758/2015_CARDIS/figures/Criterion2notSSS.pdf>
+]
+<figures/Criterion3.pdf, id=159, 521.95pt x 348.30125pt>
 File: figures/Criterion3.pdf Graphic file (type pdf)
 
 <use figures/Criterion3.pdf>
@@ -1060,7 +1074,7 @@ Here is how much of TeX's memory you used:
  18054 multiletter control sequences out of 15000+200000
  15494 words of font info for 56 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 62i,13n,75p,2009b,386s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 62i,13n,75p,2053b,386s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
@@ -1087,7 +1101,7 @@ ls/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/
 msam5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam
 7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (15 pages, 580414 bytes).
+Output written on main.pdf (15 pages, 581755 bytes).
 PDF statistics:
  281 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
