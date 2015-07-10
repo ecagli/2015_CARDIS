@@ -8,7 +8,7 @@ C.~Archambeau, E.~Peeters, F.-X. Standaert, and J.-J. Quisquater.
   in Computer Science}, pages 1--14. Springer Berlin Heidelberg, 2006.
 
 \bibitem{Batina2012}
-Lejla Batina, Jip Hogenboom, and JasperG.J. van Woudenberg.
+Lejla Batina, Jip Hogenboom, and Jasper~G.J. van Woudenberg.
 \newblock Getting more from pca: First results of using principal component
   analysis for extensive power analysis.
 \newblock In Orr Dunkelman, editor, {\em Topics in Cryptology CT-RSA 2012},
@@ -37,7 +37,7 @@ Suresh Chari, JosyulaR. Rao, and Pankaj Rohatgi.
 
 \bibitem{Chen2000}
 Li-Fen Chen, Hong-Yuan~Mark Liao, Ming-Tat Ko, Ja-Chen Lin, and Gwo-Jong Yu.
-\newblock A new lda-based face recognition system which can solve the small
+\newblock A new {LDA}-based face recognition system which can solve the small
   sample size problem.
 \newblock {\em Pattern Recognition}, 33(10):1713 -- 1726, 2000.
 
@@ -72,7 +72,7 @@ Keinosuke Fukunaga.
 
 \bibitem{huang}
 Rui Huang, Qingshan Liu, Hanqing Lu, and Songde Ma.
-\newblock Solving the small sample size problem of lda.
+\newblock Solving the small sample size problem of {LDA}.
 \newblock In {\em Pattern Recognition, 2002. Proceedings. 16th International
   Conference on}, volume~3, pages 29--32 vol.3, 2002.
 
