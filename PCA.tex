@@ -2,7 +2,7 @@
 %
 %
 \subsection{Principal Component Analysis, the classical statistical tool}
-The Principal Component Analysis (PCA) \cite{fisher1938statistical} is a statistical technique for data dimensionality reduction. It looks for the so-called {\em Principal Components} (PCs for short), which are vectors that form an orthonormal basis for $\mathbb{R}^\traceLength$ (\textit{i.e.} these vectors have norm equal to 1 and are orthogonal to each other). Such PCs are computed, via singular value decomposition, as the eigenvectors of the empirical covariance matrix of data: given a set of data $(\sss[]{i})_{i=1,\dots,\numTraces[]},$ the empirical covariance matrix is given by:
+The Principal Component Analysis (PCA) \cite{fisher1938statistical} is a statistical technique for data dimensionality reduction. It looks for the so-called {\em Principal Components} (PCs for short), which are vectors that form an orthonormal basis for $\mathbb{R}^\traceLength$ (\textit{i.e.} these vectors have norm equal to 1 and are orthogonal to each other). Such PCs are computed as the eigenvectors of the empirical covariance matrix of data: given a set of data $(\sss[]{i})_{i=1,\dots,\numTraces[]},$ the empirical covariance matrix is given by:
 \begin{equation}\label{eq:covmat}
 \covmat = \frac{1}{\numTraces[]} \sum_{i=1}^{\numTraces[]}(\sss[]{i} - \mmmX)(\sss[]{i} - \mmmX)^\intercal \mbox{ ,}
 \end{equation}
