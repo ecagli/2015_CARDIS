@@ -43,7 +43,7 @@ If the LDA has seen introduced relatively lately in the SCA literature, the Patt
 \subsubsection{Fisherface Method}
 The most popular among the solutions to SSS is the so-called {\em Fisherface} method\footnote{The name is due to the fact that it was proposed and tested for face recognition scopes.} \cite{eigenfaces}. It simply relies on the combination between PCA and LDA: a standard PCA dimensionality reduction is performed to data, making them pass from dimension $\traceLength$ to dimension $\numTraces[]-\lvert \sensVarSet \rvert$, which is the general maximal rank for $\SW$. In this reduced space, $\SW$ is very likely to be invertible and the LDA therefore applies.
 
-\subsubsection{$SW$ Null Space Method}
+\subsubsection{$\SW$ Null Space Method}
 It has been introduced by Chen et al. in \cite{Chen2000} and exploits an important result of Liu et al. \cite{liu1992generalized} who showed that Fisher's criterion \eqref{eq:LDA} is equivalent to:
  \begin{equation}
  \AAlpha_1=\mathrm{argmax}_{\AAlpha} \frac{\AAlpha^\intercal \SB \AAlpha}{\AAlpha^\intercal \SW \AAlpha + \AAlpha^\intercal \SB \AAlpha} \mbox{ .}
