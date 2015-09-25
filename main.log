@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.10.23)  23 SEP 2015 11:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.10.23)  24 SEP 2015 15:31
 entering extended mode
 **main.tex
 (C:\Users\ec243758\2015_CARDIS\main.tex
@@ -756,15 +756,15 @@ LaTeX Font Info:    ... okay on input line 161.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: twoside 
-* h-part:(L,W,R)=(91.04872pt, 432.19756pt, 91.04872pt)
-* v-part:(T,H,B)=(82.51282pt, 629.94435pt, 82.51282pt)
+* h-part:(L,W,R)=(73.71613pt, 430.00462pt, 110.57425pt)
+* v-part:(T,H,B)=(95.39737pt, 556.47656pt, 143.09605pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=432.19756pt
-* \textheight=629.94435pt
-* \oddsidemargin=18.77873pt
-* \evensidemargin=18.77873pt
-* \topmargin=-17.75717pt
+* \textwidth=430.00462pt
+* \textheight=556.47656pt
+* \oddsidemargin=1.44614pt
+* \evensidemargin=38.30426pt
+* \topmargin=-4.87262pt
 * \headheight=12.0pt
 * \headsep=16.0pt
 * \topskip=10.0pt
@@ -785,16 +785,25 @@ LaTeX Font Info:    ... okay on input line 161.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 164.
+LaTeX Font Info:    Try loading font information for U+msa on input line 170.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 164.
+LaTeX Font Info:    Try loading font information for U+msb on input line 170.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 170
+.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 170.
+
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 170.
+
 (C:\Users\ec243758\2015_CARDIS\abstract.tex)
 (C:\Users\ec243758\2015_CARDIS\intro.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
@@ -806,14 +815,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 7--9
 
  []
 
+[1
 
+{C:/Users/ec243758/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
  []
 
-[1
 
-{C:/Users/ec243758/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 Underfull \hbox (badness 10000) in paragraph at lines 13--14
 
  []
@@ -823,12 +832,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--16
 
  []
 
-) (C:\Users\ec243758\2015_CARDIS\preliminaries.tex
+) (C:\Users\ec243758\2015_CARDIS\preliminaries.tex [2]
 Underfull \hbox (badness 10000) in paragraph at lines 21--22
 
  []
 
-[2]
+
 Underfull \hbox (badness 10000) in paragraph at lines 30--31
 
  []
@@ -843,12 +852,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--10
 
  []
 
-
+[4]
 Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
-[4]
+
 Underfull \hbox (badness 10000) in paragraph at lines 17--19
 
  []
@@ -858,92 +867,92 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--21
 
  []
 
-
+[5]
 Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
  []
 
-[5] <figures/DPAcontestPC1.pdf, id=42, 521.95pt x 348.30125pt>
+<figures/DPAcontestPC1.pdf, id=45, 521.95pt x 348.30125pt>
 File: figures/DPAcontestPC1.pdf Graphic file (type pdf)
 
 <use figures/DPAcontestPC1.pdf>
 Package pdftex.def Info: figures/DPAcontestPC1.pdf used on input line 49.
-(pdftex.def)             Requested size: 194.48758pt x 129.78355pt.
+(pdftex.def)             Requested size: 193.50076pt x 129.12454pt.
 
-<figures/DPAcontestPC6.pdf, id=43, 521.95pt x 348.30125pt>
+<figures/DPAcontestPC6.pdf, id=46, 521.95pt x 348.30125pt>
 File: figures/DPAcontestPC6.pdf Graphic file (type pdf)
 
 <use figures/DPAcontestPC6.pdf>
 Package pdftex.def Info: figures/DPAcontestPC6.pdf used on input line 50.
-(pdftex.def)             Requested size: 194.48758pt x 129.78355pt.
-
+(pdftex.def)             Requested size: 193.50076pt x 129.12454pt.
+ [6]
 Underfull \hbox (badness 10000) in paragraph at lines 61--63
 
  []
 
-<figures/cumulativeELVallRectangle.pdf, id=44, 521.95pt x 348.30125pt>
+<figures/cumulativeELVallRectangle.pdf, id=50, 521.95pt x 348.30125pt>
 File: figures/cumulativeELVallRectangle.pdf Graphic file (type pdf)
 
 <use figures/cumulativeELVallRectangle.pdf>
 Package pdftex.def Info: figures/cumulativeELVallRectangle.pdf used on input li
 ne 69.
-(pdftex.def)             Requested size: 216.09877pt x 144.20218pt.
+(pdftex.def)             Requested size: 215.0023pt x 143.47408pt.
 
-<figures/cumulativeELVzoomedRectangle.pdf, id=45, 521.95pt x 348.30125pt>
+<figures/cumulativeELVzoomedRectangle.pdf, id=51, 521.95pt x 348.30125pt>
 File: figures/cumulativeELVzoomedRectangle.pdf Graphic file (type pdf)
 
 <use figures/cumulativeELVzoomedRectangle.pdf>
 Package pdftex.def Info: figures/cumulativeELVzoomedRectangle.pdf used on input
  line 70.
-(pdftex.def)             Requested size: 216.09877pt x 144.20218pt.
+(pdftex.def)             Requested size: 215.0023pt x 143.47408pt.
 
 Overfull \hbox (2.05553pt too wide) in paragraph at lines 69--71
 [][] [] 
  []
 
-[6 <C:/Users/ec243758/2015_CARDIS/figures/DPAcontestPC1.pdf> <C:/Users/ec243758
+[7 <C:/Users/ec243758/2015_CARDIS/figures/DPAcontestPC1.pdf> <C:/Users/ec243758
 /2015_CARDIS/figures/DPAcontestPC6.pdf>]
-<figures/PC1.pdf, id=61, 521.95pt x 348.30125pt>
+<figures/PC1.pdf, id=68, 521.95pt x 348.30125pt>
 File: figures/PC1.pdf Graphic file (type pdf)
  <use figures/PC1.pdf>
 Package pdftex.def Info: figures/PC1.pdf used on input line 90.
-(pdftex.def)             Requested size: 133.98018pt x 89.40291pt.
+(pdftex.def)             Requested size: 133.30037pt x 88.95116pt.
 
-<figures/PC2.pdf, id=62, 521.95pt x 348.30125pt>
+<figures/PC2.pdf, id=69, 521.95pt x 348.30125pt>
 File: figures/PC2.pdf Graphic file (type pdf)
  <use figures/PC2.pdf>
 Package pdftex.def Info: figures/PC2.pdf used on input line 91.
-(pdftex.def)             Requested size: 133.98018pt x 89.40291pt.
+(pdftex.def)             Requested size: 133.30037pt x 88.95116pt.
 
-<figures/PC3.pdf, id=63, 521.95pt x 348.30125pt>
+<figures/PC3.pdf, id=70, 521.95pt x 348.30125pt>
 File: figures/PC3.pdf Graphic file (type pdf)
  <use figures/PC3.pdf>
 Package pdftex.def Info: figures/PC3.pdf used on input line 92.
-(pdftex.def)             Requested size: 133.98018pt x 89.40291pt.
+(pdftex.def)             Requested size: 133.30037pt x 88.95116pt.
 
-<figures/PC4.pdf, id=64, 521.95pt x 348.30125pt>
+<figures/PC4.pdf, id=71, 521.95pt x 348.30125pt>
 File: figures/PC4.pdf Graphic file (type pdf)
  <use figures/PC4.pdf>
 Package pdftex.def Info: figures/PC4.pdf used on input line 93.
-(pdftex.def)             Requested size: 133.98018pt x 89.40291pt.
+(pdftex.def)             Requested size: 133.30037pt x 88.95116pt.
 
-<figures/PC5.pdf, id=65, 521.95pt x 348.30125pt>
+<figures/PC5.pdf, id=72, 521.95pt x 348.30125pt>
 File: figures/PC5.pdf Graphic file (type pdf)
  <use figures/PC5.pdf>
 Package pdftex.def Info: figures/PC5.pdf used on input line 94.
-(pdftex.def)             Requested size: 133.98018pt x 89.40291pt.
+(pdftex.def)             Requested size: 133.30037pt x 88.95116pt.
 
-<figures/PC6.pdf, id=66, 521.95pt x 348.30125pt>
+<figures/PC6.pdf, id=73, 521.95pt x 348.30125pt>
 File: figures/PC6.pdf Graphic file (type pdf)
  <use figures/PC6.pdf>
 Package pdftex.def Info: figures/PC6.pdf used on input line 95.
-(pdftex.def)             Requested size: 133.98018pt x 89.40291pt.
+(pdftex.def)             Requested size: 133.30037pt x 88.95116pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 98--100
 
  []
 
-[7 <C:/Users/ec243758/2015_CARDIS/figures/cumulativeELVallRectangle.pdf> <C:/Us
+[8 <C:/Users/ec243758/2015_CARDIS/figures/cumulativeELVallRectangle.pdf> <C:/Us
 ers/ec243758/2015_CARDIS/figures/cumulativeELVzoomedRectangle.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
@@ -954,7 +963,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
-[8 <C:/Users/ec243758/2015_CARDIS/figures/PC1.pdf> <C:/Users/ec243758/2015_CARD
+[9 <C:/Users/ec243758/2015_CARDIS/figures/PC1.pdf> <C:/Users/ec243758/2015_CARD
 IS/figures/PC2.pdf> <C:/Users/ec243758/2015_CARDIS/figures/PC3.pdf> <C:/Users/e
 c243758/2015_CARDIS/figures/PC4.pdf> <C:/Users/ec243758/2015_CARDIS/figures/PC5
 .pdf> <C:/Users/ec243758/2015_CARDIS/figures/PC6.pdf>]
@@ -972,39 +981,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 37--38
 
  []
 
-
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 39--40
 
  []
 
-[9] [10]) (C:\Users\ec243758\2015_CARDIS\experiments.tex [11]
-<figures/Criterion1.pdf, id=131, 521.95pt x 348.30125pt>
+[11]) (C:\Users\ec243758\2015_CARDIS\experiments.tex [12] [13]
+<figures/Criterion1.pdf, id=140, 521.95pt x 348.30125pt>
 File: figures/Criterion1.pdf Graphic file (type pdf)
 
 <use figures/Criterion1.pdf>
 Package pdftex.def Info: figures/Criterion1.pdf used on input line 33.
-(pdftex.def)             Requested size: 216.09877pt x 144.20218pt.
+(pdftex.def)             Requested size: 215.0023pt x 143.47408pt.
 
-<figures/Criterion1Good.pdf, id=132, 521.95pt x 348.30125pt>
+<figures/Criterion1Good.pdf, id=141, 521.95pt x 348.30125pt>
 File: figures/Criterion1Good.pdf Graphic file (type pdf)
 
 <use figures/Criterion1Good.pdf>
 Package pdftex.def Info: figures/Criterion1Good.pdf used on input line 35.
-(pdftex.def)             Requested size: 216.09877pt x 144.20218pt.
+(pdftex.def)             Requested size: 215.0023pt x 143.47408pt.
 
-<figures/Criterion2SSS.pdf, id=133, 521.95pt x 348.30125pt>
+<figures/Criterion2SSS.pdf, id=142, 521.95pt x 348.30125pt>
 File: figures/Criterion2SSS.pdf Graphic file (type pdf)
 
 <use figures/Criterion2SSS.pdf>
 Package pdftex.def Info: figures/Criterion2SSS.pdf used on input line 37.
-(pdftex.def)             Requested size: 216.09877pt x 144.20218pt.
+(pdftex.def)             Requested size: 215.0023pt x 143.47408pt.
 
-<figures/Criterion2notSSS.pdf, id=134, 521.95pt x 348.30125pt>
+<figures/Criterion2notSSS.pdf, id=143, 521.95pt x 348.30125pt>
 File: figures/Criterion2notSSS.pdf Graphic file (type pdf)
 
 <use figures/Criterion2notSSS.pdf>
 Package pdftex.def Info: figures/Criterion2notSSS.pdf used on input line 39.
-(pdftex.def)             Requested size: 216.09877pt x 144.20218pt.
+(pdftex.def)             Requested size: 215.0023pt x 143.47408pt.
 
 Overfull \hbox (8.22215pt too wide) in paragraph at lines 33--40
 [][] []
@@ -1015,83 +1024,86 @@ Overfull \hbox (8.22215pt too wide) in paragraph at lines 33--40
 [] [] 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[12] <figures/Criterion3.pdf, id=138, 521.95pt x 348.30125pt>
+[14 <C:/Users/ec243758/2015_CARDIS/figures/Criterion1.pdf> <C:/Users/ec243758/2
+015_CARDIS/figures/Criterion1Good.pdf> <C:/Users/ec243758/2015_CARDIS/figures/C
+riterion2SSS.pdf> <C:/Users/ec243758/2015_CARDIS/figures/Criterion2notSSS.pdf>]
+<figures/Criterion3.pdf, id=171, 521.95pt x 348.30125pt>
 File: figures/Criterion3.pdf Graphic file (type pdf)
 
 <use figures/Criterion3.pdf>
 Package pdftex.def Info: figures/Criterion3.pdf used on input line 64.
-(pdftex.def)             Requested size: 211.77917pt x 141.32164pt.
+(pdftex.def)             Requested size: 210.70462pt x 140.60417pt.
 
 Overfull \hbox (15.0pt too wide) in paragraph at lines 60--113
 []$[]$ 
  []
 
-<figures/Criterion4.pdf, id=139, 521.95pt x 348.30125pt>
+<figures/Criterion4.pdf, id=172, 521.95pt x 348.30125pt>
 File: figures/Criterion4.pdf Graphic file (type pdf)
 
 <use figures/Criterion4.pdf>
 Package pdftex.def Info: figures/Criterion4.pdf used on input line 118.
-(pdftex.def)             Requested size: 216.09877pt x 144.20218pt.
+(pdftex.def)             Requested size: 215.0023pt x 143.47408pt.
 
-<figures/Criterion4cutted.pdf, id=140, 521.95pt x 348.30125pt>
+<figures/Criterion4cutted.pdf, id=173, 521.95pt x 348.30125pt>
 File: figures/Criterion4cutted.pdf Graphic file (type pdf)
 
 <use figures/Criterion4cutted.pdf>
 Package pdftex.def Info: figures/Criterion4cutted.pdf used on input line 119.
-(pdftex.def)             Requested size: 216.09877pt x 144.20218pt.
+(pdftex.def)             Requested size: 215.0023pt x 143.47408pt.
 
 Overfull \hbox (2.05553pt too wide) in paragraph at lines 118--120
 [][] [] 
  []
 
-[13 <C:/Users/ec243758/2015_CARDIS/figures/Criterion1.pdf> <C:/Users/ec243758/2
-015_CARDIS/figures/Criterion1Good.pdf> <C:/Users/ec243758/2015_CARDIS/figures/C
-riterion2SSS.pdf> <C:/Users/ec243758/2015_CARDIS/figures/Criterion2notSSS.pdf> 
-<C:/Users/ec243758/2015_CARDIS/figures/Criterion3.pdf>])
-(C:\Users\ec243758\2015_CARDIS\conclusions.tex)
-(C:\Users\ec243758\2015_CARDIS\main.bbl [14 <C:/Users/ec243758/2015_CARDIS/figu
-res/Criterion4.pdf> <C:/Users/ec243758/2015_CARDIS/figures/Criterion4cutted.pdf
->]) [15] (C:\Users\ec243758\2015_CARDIS\main.aux) ) 
+) (C:\Users\ec243758\2015_CARDIS\conclusions.tex [15 <C:/Users/ec243758/2015_CA
+RDIS/figures/Criterion3.pdf>]) (C:\Users\ec243758\2015_CARDIS\main.bbl [16 <C:/
+Users/ec243758/2015_CARDIS/figures/Criterion4.pdf> <C:/Users/ec243758/2015_CARD
+IS/figures/Criterion4cutted.pdf>]) [17] (C:\Users\ec243758\2015_CARDIS\main.aux
+)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
 Here is how much of TeX's memory you used:
- 15103 strings out of 493921
- 288882 string characters out of 3147272
- 338700 words of memory out of 3000000
- 18053 multiletter control sequences out of 15000+200000
- 15494 words of font info for 56 fonts, out of 3000000 for 9000
+ 15113 strings out of 493921
+ 288992 string characters out of 3147272
+ 340696 words of memory out of 3000000
+ 18060 multiletter control sequences out of 15000+200000
+ 15661 words of font info for 57 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  62i,16n,75p,1958b,386s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmbx5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmbx7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-bx9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmmib10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/
-amsfonts/cmextra/cmmib7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiK
-TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
-s/cm/cmti9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols
-/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/ms
-am5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msam7.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on main.pdf (15 pages, 580243 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx5.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmbx7.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmbxti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
+i5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Program Files/
+MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts
+/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
+blic/amsfonts/cm/cmtt9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/symbols/msam10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/symbols/msam5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sy
+mbols/msam7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbol
+s/msbm10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/m
+sbm7.pfb>
+Output written on main.pdf (17 pages, 602045 bytes).
 PDF statistics:
- 281 PDF objects out of 1000 (max. 8388607)
+ 295 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  98 words of extra memory for PDF output out of 10000 (max. 10000000)
 

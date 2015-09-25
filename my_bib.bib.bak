@@ -45,7 +45,7 @@
 
 @InCollection{Batina2012,
   Title                    = {Getting More from PCA: First Results of Using Principal Component Analysis for Extensive Power Analysis},
-  Author                   = {Batina, Lejla and Hogenboom, Jip and van Woudenberg, JasperG.J.},
+  Author                   = {Batina, Lejla and Hogenboom, Jip and van Woudenberg, Jasper G.J.},
   Booktitle                = {Topics in Cryptology CT-RSA 2012},
   Publisher                = {Springer Berlin Heidelberg},
   Year                     = {2012},
@@ -101,7 +101,7 @@
 @Misc{eigenfaces,
   Title                    = {Eigenfaces vs. Fisherfaces: Recognition Using Class Specific Linear Projection},
 
-  Author                   = {Peter N. Belhumeur and João P. Hespanha and David J. Kriegman},
+  Author                   = {Peter N. Belhumeur and Joao P. Hespanha and David J. Kriegman},
   Year                     = {1997},
 
   File                     = {:H\:\\Articles\\fisherface.pdf:PDF}
@@ -170,7 +170,7 @@
 }
 
 @Article{Chen2000,
-  Title                    = {A new LDA-based face recognition system which can solve the small sample size problem },
+  Title                    = {A new {LDA}-based face recognition system which can solve the small sample size problem },
   Author                   = {Li-Fen Chen and Hong-Yuan Mark Liao and Ming-Tat Ko and Ja-Chen Lin and Gwo-Jong Yu},
   Journal                  = {Pattern Recognition },
   Year                     = {2000},
@@ -217,6 +217,15 @@
   Owner                    = {EC243758},
   Timestamp                = {2015.01.14}
 }
+
+
+@InProceedings{lessIsMore,
+  Title                    = {Less is more: Dimensionality reduction from a theoretical perspective},
+  Author                   = {Bruneau, N. and Guilley, S. and Heuser, A. and Marion, D. and Rioul, O.},
+  Booktitle                = {17th Workshop on Cryptographic Hardware and Embedded Systems (CHES 2015)},
+  Year                     = {to appear, 2015}
+}
+
 
 @InCollection{choudary2014efficient,
   Title                    = {Efficient template attacks},
@@ -426,7 +435,7 @@ Attacks More Effectively?},
 }
 
 @InProceedings{huang,
-  Title                    = {Solving the small sample size problem of LDA},
+  Title                    = {Solving the small sample size problem of {LDA}},
   Author                   = {Rui Huang and Qingshan Liu and Hanqing Lu and Songde Ma},
   Booktitle                = {Pattern Recognition, 2002. Proceedings. 16th International Conference on},
   Year                     = {2002},
@@ -530,7 +539,7 @@ Attacks More Effectively?},
 }
 
 @InCollection{Lomne2014,
-  Title                    = {How to Estimate the Success Rate of Higher-Order Side-ChannelÂ Attacks},
+  Title                    = {How to Estimate the Success Rate of Higher-Order Side-Channel Attacks},
   Author                   = {Lomn\'e, Victor and Prouff, Emmanuel and Rivain, Matthieu and Roche, Thomas and Thillard, Adrian},
   Booktitle                = {Cryptographic Hardware and Embedded Systems CHES 2014},
   Publisher                = {Springer Berlin Heidelberg},
@@ -732,7 +741,8 @@ Attacks More Effectively?},
   Title                    = {DPA Contest 4},
   Author                   = {TELECOM ParisTech},
 
-  Url                      = {http://www.DPAcontest.org/v4/}
+  note                      = {http://www.DPAcontest.org/v4/},
+   url                      = {http://www.DPAcontest.org/v4/}
 }
 
 @Article{DBLP:journals/tc/ProuffRB09,
@@ -814,7 +824,7 @@ Attacks More Effectively?},
 
 @Article{Scholkopf98nonlinearcomponent,
   Title                    = {Nonlinear Component Analysis as a Kernel Eigenvalue Problem},
-  Author                   = {Bernhard Schölkopf and Alexander Smola and Er Smola and Klaus-Robert Müller},
+  Author                   = {Bernhard Schï¿½lkopf and Alexander Smola and Er Smola and Klaus-Robert Mï¿½ller},
   Journal                  = {Neural Computation},
   Year                     = {1998},
   Pages                    = {1299--1319},
@@ -852,6 +862,20 @@ Attacks More Effectively?},
   Doi                      = {10.1007/978-3-642-24209-0_27},
   ISBN                     = {978-3-642-24208-3},
   Keywords                 = {Principal Component Analysis (PCA); Data Encryption Standard (DES); Side Channel Attacks (DoM; DPA; CPA; VPA); Masking countermeasures}
+}
+
+@InProceedings{specht,
+  Title                    = {Improving Non-Profiled Attacks on
+Exponentiations Based on Clustering and
+Extracting Leakage from Multi-Channel
+High-Resolution {EM} Measurements
+},
+  Author                   = {Specht, Robert and Heyszl, Johann and Kleinsteuber,Martin and Sig, Georg},
+  Booktitle                = {Sixth International Workshop on Constructive Side-Channel Analysis and Secure Design (COSADE 2015)},
+  Year                     = {2015},
+
+  Owner                    = {EC243758},
+  Timestamp                = {2015.07.03}
 }
 
 @InCollection{Standaert2008,
