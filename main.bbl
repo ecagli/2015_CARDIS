@@ -70,6 +70,11 @@ Keinosuke Fukunaga.
 \newblock {\em Introduction to Statistical Pattern Recognition (2Nd Ed.)}.
 \newblock Academic Press Professional, Inc., San Diego, CA, USA, 1990.
 
+\bibitem{guhr1998random}
+Thomas Guhr, Axel M{\"u}ller-Groeling, and Hans~A Weidenm{\"u}ller.
+\newblock Random-matrix theories in quantum physics: common concepts.
+\newblock {\em Physics Reports}, 299(4):189--425, 1998.
+
 \bibitem{huang}
 Rui Huang, Qingshan Liu, Hanqing Lu, and Songde Ma.
 \newblock Solving the small sample size problem of {LDA}.

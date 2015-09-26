@@ -55,7 +55,7 @@ To the best of our knowledge, a single method adapted to SCA context has been pr
 The leaking side-channel information is localised in few points of the acquired trace.
 \end{assumption}
 In the rest of the paper, we conduct our own analyses under Assumption \ref{assum:local} that we think to be reasonable in SCA contexts where the goal of the security developers is to minimize the number of leaking points.
-Under this assumption, the authors of \cite{SCAclassProbl} introduce in side-channel literature the {\em Inverse Participation Ratio} (IPR) and propose to use such a score to evaluate the eigenvectors {\em localization}. It is defined as follows:
+Under this assumption, the authors of \cite{SCAclassProbl} use for side-channel attack purposes the {\em Inverse Participation Ratio} (IPR), a measure widely used in Quantum Mechanics domain (see for example \cite{guhr1998random}). They propose to use such a score to evaluate the eigenvectors {\em localization}. It is defined as follows:
 \begin{equation}
 \mathrm{IPR}(\AAlpha_i) = \sum_{j=1}^\traceLength \AAlpha_i[j]^4 \mbox{ .}
 \end{equation}
